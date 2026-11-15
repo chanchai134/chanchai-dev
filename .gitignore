@@ -1,0 +1,14 @@
+# Private resume sources and day-to-day work logs
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.pdf
+
+# Microsoft Office lock files
+~$*
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
