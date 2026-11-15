@@ -3,6 +3,8 @@
 *.docx
 *.xls
 *.xlsx
+
+# On-demand PDF exports — never committed
 *.pdf
 
 # Microsoft Office lock files
@@ -12,3 +14,6 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Generated Lambda deployment archive
+cv-lambda.zip

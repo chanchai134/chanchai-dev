@@ -1,17 +1,18 @@
 # Chanchai Charnataparporn — CV
 
-A comprehensive backend software engineer CV built as a self-contained HTML document with a six-page A4 print layout. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository.
+A comprehensive backend software engineer CV built as a self-contained HTML document with a six-page A4 print layout. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function streams the same HTML through your existing API Gateway, and GitHub Actions updates its code through the AWS CLI.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `chanchai.html` | Editable CV source with embedded CSS, print layout, and PDF export button |
-| `README.md` | Viewing, printing, updating, and review instructions |
-| `AGENTS.md` | Maintenance, verification, and staging instructions for coding agents |
-| `.gitignore` | Exclusions for private source documents and generated PDFs |
+| `index.cjs` | Dependency-free Node.js handler that streams the HTML from disk |
+| `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
+| `AGENTS.md` | Maintenance and staging instructions for coding agents |
+| `.gitignore` | Exclusions for private sources and generated files |
 
-The CV covers professional experience, technical skills, platform engineering, selected projects, education, certifications, and academic awards. It uses no external assets, packages, or build tools.
+The CV covers professional experience, technical skills, platform engineering, selected projects, education, certifications, and academic awards. The HTML and Lambda handler have no external runtime dependencies.
 
 ## Open the CV
 
@@ -40,6 +41,33 @@ The stylesheet defines A4 dimensions and explicit page breaks. Do not use “Fit
 Edit `chanchai.html` and check every page in the browser's print preview. When a PDF is needed, export a fresh copy with **Print / Save as PDF**. Do not add the exported PDF to Git.
 
 Each page is an explicit `<section class="page">`. When adding or removing pages, update page numbering and the print instructions as well.
+
+## AWS Lambda deployment
+
+The Node.js 24 Lambda uses `awslambda.streamifyResponse`, `awslambda.HttpResponseStream.from`, `fs.createReadStream`, and `stream/promises.pipeline` to stream `chanchai.html` from disk without buffering it in memory. It returns status 200 and only the header `Content-Type: text/html; charset=utf-8`. Request events are ignored because this function serves only static CV content.
+
+The existing Lambda runs Node.js 24 with handler `index.handler`. Your existing API Gateway and its permissions remain separate. For response streaming, its REST API Lambda proxy integration must use response transfer mode `STREAM`.
+
+The workflow has no CI test or SAM build. It simply:
+
+1. Assumes your deployment role through GitHub OIDC.
+2. Packs `index.cjs` and `chanchai.html` at the ZIP root.
+3. Runs `aws lambda update-function-code --publish`.
+4. Waits for the code update to finish.
+
+Set these three repository secrets under **Settings → Secrets and variables → Actions**:
+
+| Secret | Value |
+| --- | --- |
+| `AWS_REGION` | Lambda region, such as `ap-southeast-1` |
+| `FUNCTION_ARN` | Full ARN of the existing Lambda function |
+| `AWS_DEPLOY_ROLE_ARN` | IAM role trusted by this repository's GitHub OIDC identity |
+
+The deployment role needs `lambda:UpdateFunctionCode` and `lambda:PublishVersion` on that function, plus `lambda:GetFunctionConfiguration` for the AWS waiter. No AWS access keys, S3 bucket, SAM, CloudFormation, or GitHub variables are used.
+
+Pushes to `main` deploy when `chanchai.html`, `index.cjs`, or the workflow changes. Manual deployment is available through **Actions → Deploy CV to AWS Lambda**.
+
+After a successful deployment, the live CV is available at **https://chanchai.dev/**.
 
 ## Review and publish changes
 
