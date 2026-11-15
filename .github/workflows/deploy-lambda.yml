@@ -1,0 +1,55 @@
+name: Deploy CV to AWS Lambda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - chanchai.html
+      - index.cjs
+      - .github/workflows/deploy-lambda.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chanchai-cv-lambda-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Package and upload
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Assume AWS deployment role with GitHub OIDC
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          role-session-name: chanchai-cv-deploy
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Package Lambda code
+        run: |
+          zip -j -X cv-lambda.zip index.cjs chanchai.html
+          unzip -Z1 cv-lambda.zip
+
+      - name: Update and publish Lambda code
+        run: |
+          aws lambda update-function-code \
+            --function-name '${{ secrets.FUNCTION_ARN }}' \
+            --zip-file fileb://cv-lambda.zip \
+            --publish \
+            --region '${{ secrets.AWS_REGION }}' \
+            --query '{Version: Version, CodeSha256: CodeSha256}' \
+            --output json
+          aws lambda wait function-updated \
+            --function-name '${{ secrets.FUNCTION_ARN }}' \
+            --region '${{ secrets.AWS_REGION }}'
