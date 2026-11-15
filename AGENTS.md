@@ -2,12 +2,12 @@
 
 ## Purpose
 
-This repository contains Chanchai Charnataparporn's comprehensive CV. The published artifact is a static HTML document with a six-page A4 print layout. A dependency-free Node.js AWS Lambda handler streams the same HTML through the owner's existing API Gateway. GitHub Actions packages two files into a ZIP and updates the existing Lambda with the AWS CLI. There is no local application server, package manager, application build step, SAM template, or CI test suite.
+This repository contains Chanchai Charnataparporn's comprehensive CV. The published artifact is a static HTML document with a six-page A4 print layout. A dependency-free Node.js AWS Lambda handler serves the same HTML through the owner's existing API Gateway HTTP API. GitHub Actions packages two files into a ZIP and updates the existing Lambda with the AWS CLI. There is no local application server, package manager, application build step, SAM template, or CI test suite.
 
 ## Canonical files
 
 - `chanchai.html` is the canonical, human-editable source and contains the **Print / Save as PDF** button.
-- `index.cjs` streams that exact HTML with the native Node.js Lambda response-streaming API.
+- `index.cjs` reads that exact HTML from disk and returns it as a string in a standard Lambda proxy response.
 - `.github/workflows/deploy-lambda.yml` assumes an AWS role through GitHub OIDC, packs `index.cjs` and `chanchai.html` into a ZIP, and runs `aws lambda update-function-code --publish`.
 - `README.md` documents viewing, printing, updating, deployment configuration, and reviewing the CV.
 - `.gitignore` excludes private sources and generated files.
@@ -59,12 +59,12 @@ Generated PDFs must remain outside Git. Do not create a repository PDF through D
 
 ## AWS Lambda and continuous deployment
 
-- Keep the Lambda dependency-free and stream `chanchai.html` from disk with `createReadStream` and `pipeline`; never read the whole document into memory or add a second canonical HTML copy.
-- Export the handler with `awslambda.streamifyResponse` and wrap the writable stream using `awslambda.HttpResponseStream.from`. `awslambda` is a Lambda runtime global, not an npm dependency.
-- Return status 200 and only the header `Content-Type: text/html; charset=utf-8`. Do not add method handling, extra headers, or buffered response objects; the gateway owns HTTP behavior.
+- Keep the Lambda dependency-free and read `chanchai.html` from disk as UTF-8 with `fs/promises.readFile`; do not add a second canonical HTML copy.
+- Export a regular async `handler` that returns a standard Lambda proxy response for the existing API Gateway HTTP API. Do not use `awslambda.streamifyResponse` or `awslambda.HttpResponseStream`.
+- Return `statusCode: 200`, the HTML string in `body`, and only the header `Content-Type: text/html; charset=utf-8`. Do not add method handling or extra headers; the gateway owns HTTP behavior.
 - The workflow packs exactly `index.cjs` and `chanchai.html` at the root of `cv-lambda.zip` with `zip -j -X`, then calls `aws lambda update-function-code --zip-file fileb://cv-lambda.zip --publish` and `aws lambda wait function-updated`.
 - The Node.js 24 Lambda and API Gateway already exist and are not provisioned by this repository. Do not add SAM, CloudFormation, Function URLs, artifact buckets, or gateway resources to this deployment.
-- The gateway's REST API Lambda proxy integration should use response transfer mode `STREAM`.
+- The gateway's HTTP API Lambda proxy integration uses standard buffered responses and does not use REST API response transfer mode `STREAM`.
 - GitHub OIDC supplies short-lived credentials. Never add long-lived AWS access keys to workflow files or documentation.
 - Use exactly three repository secrets: `AWS_REGION`, `FUNCTION_ARN`, and `AWS_DEPLOY_ROLE_ARN`. `FUNCTION_ARN` is the full ARN of the existing Lambda. Do not reintroduce GitHub variables or other deployment configuration.
 - Reference secrets directly where needed; do not map them into `env` variables or echo them in workflow steps.

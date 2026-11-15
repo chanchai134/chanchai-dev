@@ -1,17 +1,14 @@
-const { createReadStream } = require("node:fs");
+const { readFile } = require("node:fs/promises");
 const { join } = require("node:path");
-const { pipeline } = require("node:stream/promises");
 
-exports.handler = awslambda.streamifyResponse(async (event, responseStream, context) => {
-  responseStream = awslambda.HttpResponseStream.from(responseStream, {
+exports.handler = async () => {
+  const body = await readFile(join(__dirname, "chanchai.html"), "utf8");
+
+  return {
     statusCode: 200,
     headers: {
       "Content-Type": "text/html; charset=utf-8",
     },
-  });
-
-  await pipeline(
-    createReadStream(join(__dirname, "chanchai.html")),
-    responseStream,
-  );
-});
+    body,
+  };
+};

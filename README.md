@@ -1,13 +1,13 @@
 # Chanchai Charnataparporn — CV
 
-A comprehensive backend software engineer CV built as a self-contained HTML document with a six-page A4 print layout. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function streams the same HTML through your existing API Gateway, and GitHub Actions updates its code through the AWS CLI.
+A comprehensive backend software engineer CV built as a self-contained HTML document with a six-page A4 print layout. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `chanchai.html` | Editable CV source with embedded CSS, print layout, and PDF export button |
-| `index.cjs` | Dependency-free Node.js handler that streams the HTML from disk |
+| `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
 | `AGENTS.md` | Maintenance and staging instructions for coding agents |
 | `.gitignore` | Exclusions for private sources and generated files |
@@ -44,9 +44,9 @@ Each page is an explicit `<section class="page">`. When adding or removing pages
 
 ## AWS Lambda deployment
 
-The Node.js 24 Lambda uses `awslambda.streamifyResponse`, `awslambda.HttpResponseStream.from`, `fs.createReadStream`, and `stream/promises.pipeline` to stream `chanchai.html` from disk without buffering it in memory. It returns status 200 and only the header `Content-Type: text/html; charset=utf-8`. Request events are ignored because this function serves only static CV content.
+The Node.js 24 Lambda uses `fs/promises.readFile` to read `chanchai.html` from disk as a UTF-8 string and returns a standard Lambda proxy response. The response contains `statusCode: 200`, the HTML string in `body`, and only the header `Content-Type: text/html; charset=utf-8`. Request events are ignored because this function serves only static CV content.
 
-The existing Lambda runs Node.js 24 with handler `index.handler`. Your existing API Gateway and its permissions remain separate. For response streaming, its REST API Lambda proxy integration must use response transfer mode `STREAM`.
+The existing Lambda runs Node.js 24 with handler `index.handler`. Your existing API Gateway HTTP API and its permissions remain separate. Its Lambda proxy integration uses standard buffered responses; no response streaming configuration is required.
 
 The workflow has no CI test or SAM build. It simply:
 
