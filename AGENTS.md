@@ -2,16 +2,15 @@
 
 ## Purpose
 
-This repository contains Chanchai Charnataparporn's comprehensive CV. The published artifacts are a static HTML document and its generated A4 PDF. There is no application server, package manager, build step, or test framework.
+This repository contains Chanchai Charnataparporn's comprehensive CV. The published artifact is a static HTML document with a six-page A4 print layout. There is no application server, package manager, build step, or test framework.
 
 ## Canonical files
 
-- `chanchai.html` is the canonical, human-editable source.
-- `chanchai.pdf` is the generated, ready-to-share artifact and is intentionally tracked.
-- `README.md` documents viewing, printing, and updating the CV.
-- `.gitignore` excludes private Word resumes and Excel work logs.
+- `chanchai.html` is the canonical, human-editable source and contains the **Print / Save as PDF** button.
+- `README.md` documents viewing, printing, updating, and reviewing the CV.
+- `.gitignore` excludes private Word resumes, Excel work logs, and generated PDFs.
 
-Keep the HTML and PDF synchronized. Never edit the PDF independently to make a content change; change the HTML and regenerate it.
+PDFs are on-demand exports only; they are not repository artifacts. Never add `chanchai.pdf` or any other PDF to Git. PDF creation must go through the **Print / Save as PDF** button in the HTML, not through a generated file committed alongside the source.
 
 ## Content rules
 
@@ -31,6 +30,7 @@ Keep the HTML and PDF synchronized. Never edit the PDF independently to make a c
 - Page footers are absolutely positioned. Content must remain above them.
 - The screen-only print bar is hidden in print media.
 - Preserve `break-after: page` / `page-break-after: always` behavior and avoid breaking individual jobs, project cards, or bullet items where practical.
+- Preserve the **Print / Save as PDF** button and its `window.print()` behavior.
 
 ## Editing workflow
 
@@ -38,12 +38,12 @@ Keep the HTML and PDF synchronized. Never edit the PDF independently to make a c
 2. Read the relevant HTML and identify the intended content or layout change.
 3. Edit `chanchai.html`; keep unrelated content and styling unchanged.
 4. Inspect every page in a real browser, including print media. Check for horizontal overflow, content beyond the page, overlapping footers, broken grids, and accidental blank pages.
-5. Regenerate `chanchai.pdf` from the updated HTML.
-6. Verify the PDF and review the final diff before committing.
+5. Review the final diff and stage only the intended files with explicit `git add` commands.
+6. Stop for the repository owner's review. Do not commit or push.
 
-## PDF generation
+## On-demand PDF export
 
-Preferred browser settings:
+The repository owner can open `chanchai.html` and click **Print / Save as PDF**. Use these browser settings:
 
 - A4 portrait
 - 100% scale
@@ -51,36 +51,29 @@ Preferred browser settings:
 - Background graphics enabled
 - Browser headers and footers disabled
 
-Browser DevTools Protocol can generate a deterministic PDF with `Page.printToPDF` using:
-
-- `printBackground: true`
-- `displayHeaderFooter: false`
-- `preferCSSPageSize: true`
-- `scale: 1`
-- All four margins set to `0`
-
-Alternatively, follow the manual Chrome/Edge instructions in `README.md`.
+Generated PDFs must remain outside Git. Do not create a repository PDF through DevTools, a script, or another build process. If the owner explicitly asks for a PDF verification copy, use the HTML print-button workflow and save it outside the repository; never stage it.
 
 ## Verification requirements
 
-A content or layout change is not complete until the generated PDF has been checked.
+A content or layout change requires a real-browser print-layout check before staging.
 
 - Confirm the expected page count; currently six pages.
-- Confirm every page is A4 portrait, approximately `594.96 × 841.92` PDF points.
-- Extract text and confirm section endings and page-number markers are present. Empty or truncated pages are failures.
-- Render all pages to images and inspect them for clipping, overlap, blank pages, broken columns, and unreadably dense content.
-- Check that `chanchai.html` and `chanchai.pdf` represent the same content.
+- Confirm the print layout uses A4 portrait and the intended page breaks.
+- Inspect all pages for clipping, overlap, blank pages, broken columns, and unreadably dense content.
+- Confirm section endings and page-number markers are present and no content is truncated.
+- Check that no PDF or private Office document is staged.
 - Run `git diff --check` and review `git diff --stat` plus the actual diff.
+- After staging, review `git status --short`, `git diff --cached --stat`, and `git diff --cached`.
 
 If content overflows, rebalance sections or add a deliberate page rather than clipping content or shrinking the entire document excessively.
 
-## Git and publishing
+## Git staging and ownership
 
 - Stage intended files explicitly; do not use `git add .` as a substitute for reviewing what will be published.
-- Do not commit ignored source documents with `git add -f`.
-- Do not rewrite published history or force-push unless the user explicitly requests it.
-- Use a focused conventional commit message, such as `docs: update CV experience` or `fix: correct CV print layout`.
-- Push the current branch to its configured upstream. Do not create releases, enable GitHub Pages, or change repository visibility unless requested.
-- After pushing, fetch or query the remote and verify that the remote branch points to the new local commit before reporting success.
+- Do not stage ignored source documents or generated PDFs with `git add -f`.
+- Do not run `git commit` or `git push`. The repository owner performs both after reviewing the staged changes.
+- Do not amend, reset, rebase, force-push, or otherwise rewrite Git history.
+- Do not create releases, enable GitHub Pages, or change repository visibility.
+- After staging, report the staged files and checks performed, then stop. Do not claim the changes were committed or published.
 
-Update this file and `README.md` whenever the maintenance or verification workflow changes.
+Update this file and `README.md` whenever the maintenance, export, or staging workflow changes.
