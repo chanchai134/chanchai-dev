@@ -12,12 +12,24 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: chanchai-cv-lambda-production
   cancel-in-progress: false
 
 jobs:
+  inspect-oidc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decode OIDC token payload
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https://example.com" | jq -r '.value')
+          echo "$TOKEN" | cut -d. -f2 | base64 -d 2>/dev/null || \
+          echo "$TOKEN" | cut -d. -f2 | tr '_-' '/+' | awk '{ l = length($0) % 4; if (l) $0 = $0 substr("====", 1, 4 - l); print }' | base64 -d
+          echo ""
+
   deploy:
     name: Package and upload
     runs-on: ubuntu-latest
@@ -28,11 +40,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
-
-      - name: Debug OIDC claims for STS
-        uses: github/actions-oidc-debugger@main
-        with:
-          audience: sts.amazonaws.com
 
       - name: Assume AWS deployment role with GitHub OIDC
         uses: aws-actions/configure-aws-credentials@v6
