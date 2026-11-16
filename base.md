@@ -1,0 +1,32 @@
+# Chanchai Charnataparporn
+Senior Software Engineer
+
+Phone: +66 (0) 83 441 9565 Email: chanchai51142@gmail.com web: [chanchai.dev](https://chanchai.dev/) 
+GitHub: [github.com/chanchai134](https://github.com/chanchai134) LinkedIn: [linkedin.com/in/chanchai134](https://www.linkedin.com/in/chanchai134)
+
+# Professional Summary
+Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver React frontends, CI/CD pipelines via GitHub Actions, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and business stakeholders.
+
+# Education and certificates
+ - Bachelor of Engineering (Computer Engineering) with First Class Honours, Kasetsart University (GPA 3.82) -> 2016 - 2020
+   - Outstanding academic student having the highest GPA (3.80) in computer engineering of the academic year 2018
+   - Outstanding academic student having the highest GPA (3.72) in computer engineering of the academic year 2017
+   - Outstanding academic student having the highest GPA (3.71) in computer engineering of the academic year 2016
+ - AWS Certified Solutions Architect – Associate -> 2024 - 2027
+   - [View certificate on Credly](https://www.credly.com/badges/4d15e4cd-f57f-4dab-9e56-55ccfd97ed83) 
+ - AWS Certified Cloud Practitioner -> 2021 - 2027
+   - [View certificate on Credly](https://www.credly.com/badges/af830fac-694a-48d8-b9a9-e6078e781cd9)
+
+# Experience
+ - ## Experience Backend Engineer -> 1 year+ (December 2025 - Now)
+   AIA Co., Ltd. (AIA Thailand)<br>
+   Outsourced via Tech Combine Co., Ltd.
+ - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
+   Omise Co., Ltd.<br>
+   Outsourced via Tech Combine Co., Ltd.
+ - ## Software Engineering II -> 8 months (September 2023 - April 2024)
+   Forth Vending Co., Ltd (TAO-BIN)
+ - ## Software Engineering -> 2 years (July 2020 - July 2022)
+   King Power Click Co., Ltd
+ - ## Data Scientist - Internship -> 3 months (June 2019 – August 2019)
+   PTT Digital Solutions Co., Ltd
