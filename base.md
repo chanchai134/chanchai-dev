@@ -27,7 +27,25 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 
  - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
    Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.<br>
-   Product: [https://www.ticketier.com](https://www.ticketier.com)<br>
+   Product: [https://www.ticketier.com](https://www.ticketier.com)
+
+Implemented OpenTelemetry instrumentation for GCP-hosted backend services and integrated tracing with Datadog to improve observability across checkout APIs.
+
+Developed Omise payment-gateway integrations covering saved-card checkout, refunds, cancellations, and webhook processing, including retry handling for inconsistent webhook data.
+
+Built Node.js/TypeScript APIs for the TICKETIER storefront and back-office staff application, supporting payment operations, order management, and user and attendee information checks.
+
+Improved OLTP reliability for ticket quotas and promotion codes by implementing optimistic locking to prevent concurrent ticket cancellations, handling transaction timeouts, and reducing lock waits caused by cross-table foreign keys.
+
+Created bilingual invoice templates in HTML and used Chrome Headless Shell to generate PDF invoices for automated email attachment and delivery.
+
+Integrated Google Cloud Storage into back-office file and reporting workflows, using time-limited signed URLs to provide secure access to stored files.
+
+Configured GitHub Actions CI/CD workflows to automate application testing, builds, and deployments.
+
+
+   - Prisma/ Pqsql
+
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
    Forth Vending Co., Ltd (TAO-BIN)
    TODO
