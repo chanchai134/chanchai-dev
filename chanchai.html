@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Comprehensive curriculum vitae for Chanchai Charnataparporn, Backend Software Engineer.">
-  <title>Chanchai Charnataparporn — Backend Software Engineer</title>
+  <meta name="description" content="Curriculum vitae for Chanchai Charnataparporn, Senior Software Engineer.">
+  <title>Chanchai Charnataparporn — Senior Software Engineer</title>
   <style>
     :root {
       --ink: #172536;
@@ -23,14 +23,14 @@
       margin: 0;
       color: var(--ink);
       font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-      font-size: 9.5pt;
+      font-size: 9.4pt;
       line-height: 1.42;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
     a { color: var(--navy); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    p { margin: 0 0 2.2mm; }
+    p { margin: 0; }
     ul { margin: 0; padding: 0; list-style: none; }
     li { margin: 0; }
 
@@ -66,88 +66,52 @@
       width: 210mm;
       height: 297mm;
       margin: 0 auto 24px;
-      padding: 13mm 15mm 16mm;
-      overflow: hidden;
+      padding: 11mm 14mm 12mm;
       background: var(--white);
       box-shadow: 0 3px 18px rgba(23,37,54,.13);
       break-after: page;
       page-break-after: always;
     }
     .page:last-child { break-after: auto; page-break-after: auto; }
-    .page-footer {
-      position: absolute;
-      left: 15mm;
-      right: 15mm;
-      bottom: 6.5mm;
-      display: flex;
-      justify-content: space-between;
-      padding-top: 2mm;
-      border-top: .35mm solid var(--line);
-      color: #687887;
-      font-size: 7.6pt;
-      letter-spacing: .02em;
-    }
-    .running-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 6mm;
-      padding-bottom: 2.4mm;
-      border-bottom: .6mm solid var(--navy);
-    }
-    .running-head strong { color: var(--navy); font-size: 10pt; }
-    .running-head span { color: var(--muted); font-size: 8pt; }
 
     .hero {
-      margin: -13mm -15mm 6mm;
-      padding: 12mm 15mm 8mm;
+      margin: -11mm -14mm 5mm;
+      padding: 9mm 14mm 6.5mm;
       color: white;
       background: var(--navy);
-      border-bottom: 2.2mm solid var(--accent);
+      border-bottom: 1.6mm solid var(--accent);
     }
-    .hero-top { display: flex; justify-content: space-between; gap: 10mm; align-items: flex-start; }
     h1 {
       margin: 0 0 1.5mm;
       color: white;
-      font-size: 27pt;
+      font-size: 25pt;
       font-weight: 650;
-      line-height: 1.08;
-      letter-spacing: -.035em;
+      line-height: 1.1;
+      letter-spacing: -.03em;
     }
-    .role { color: #bce6e8; font-size: 12.5pt; font-weight: 500; letter-spacing: .02em; }
-    .hero-badge {
-      flex: 0 0 auto;
-      margin-top: 1mm;
-      padding: 2.2mm 3mm;
-      border: .3mm solid rgba(255,255,255,.35);
-      border-radius: 2mm;
-      color: #e9f5f5;
-      font-size: 8pt;
-      line-height: 1.4;
-      text-align: center;
-    }
+    .role { color: #bce6e8; font-size: 12pt; font-weight: 500; letter-spacing: .02em; }
     .contact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 2mm 5mm;
-      margin-top: 5mm;
+      gap: 1.8mm 4.5mm;
+      margin-top: 4mm;
       color: #f2f7fa;
-      font-size: 8.7pt;
+      font-size: 8.4pt;
     }
+    .contact-row + .contact-row { margin-top: 1.8mm; }
     .contact-row a { color: white; }
     .contact-item { white-space: nowrap; }
     .contact-label { color: #a9d8dc; font-weight: 600; }
 
-    .section { margin-bottom: 5mm; }
-    .section:last-child,
-    .page > .section:last-of-type { margin-bottom: 0; }
+    .section { margin-bottom: 4.2mm; }
+    .section:last-child { margin-bottom: 0; }
     .section-title {
       display: flex;
       align-items: center;
       gap: 3mm;
-      margin: 0 0 3.2mm;
+      margin: 0 0 2.5mm;
       color: var(--navy);
-      font-size: 13.5pt;
+      font-size: 12.8pt;
       font-weight: 650;
       line-height: 1.2;
       letter-spacing: -.01em;
@@ -158,151 +122,90 @@
       flex: 1;
       background: var(--line);
     }
-    .subsection-title {
-      margin: 0 0 2mm;
-      color: var(--accent);
-      font-size: 9.6pt;
-      font-weight: 700;
-      letter-spacing: .045em;
-      text-transform: uppercase;
-    }
-    .summary { color: #2d4052; font-size: 10pt; line-height: 1.52; }
+    .summary { color: #2d4052; font-size: 9.55pt; line-height: 1.45; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3mm;
-      margin: 4mm 0 5mm;
-    }
-    .stat {
-      padding: 2.6mm 3.2mm;
-      border-left: 1.1mm solid var(--accent);
-      background: var(--soft);
-    }
-    .stat strong { display: block; color: var(--navy); font-size: 13pt; line-height: 1.1; }
-    .stat span { color: var(--muted); font-size: 8.2pt; }
-
-    .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.7mm 5mm; }
-    .skill {
-      padding: 2.3mm 2.8mm;
-      border: .3mm solid var(--line);
-      border-radius: 1.4mm;
-      background: #fbfcfd;
-      break-inside: avoid;
-    }
-    .skill h3 { margin: 0 0 1mm; color: var(--navy); font-size: 9.3pt; }
-    .skill p { margin: 0; color: #3f5263; font-size: 8.7pt; line-height: 1.43; }
-
-    .job { margin-bottom: 4.5mm; break-inside: avoid; }
-    .job:last-child { margin-bottom: 0; }
-    .job-head {
+    .split-line {
       display: flex;
       justify-content: space-between;
-      gap: 6mm;
+      gap: 5mm;
       align-items: flex-start;
-      margin-bottom: 1.6mm;
     }
-    .job-title { margin: 0; color: var(--ink); font-size: 11.4pt; line-height: 1.25; }
-    .company { color: var(--navy); font-weight: 650; }
-    .date {
+    .split-left { min-width: 0; }
+    .split-right {
       flex: 0 0 auto;
-      padding-top: .4mm;
+      padding-top: .3mm;
       color: var(--accent);
-      font-size: 8.7pt;
+      font-size: 8.4pt;
       font-weight: 700;
       white-space: nowrap;
     }
-    .job-meta { margin-bottom: 2mm; color: var(--muted); font-size: 8.6pt; }
-    .phase {
-      margin: 3mm 0 2.2mm;
-      padding: 2.1mm 2.8mm;
-      border-left: 1mm solid var(--accent);
-      background: var(--accent-soft);
-    }
-    .phase-head { display: flex; justify-content: space-between; gap: 5mm; }
-    .phase-title { color: var(--navy); font-size: 10.2pt; font-weight: 700; }
-    .phase-date { color: var(--navy); font-size: 8.4pt; font-weight: 600; white-space: nowrap; }
-    .phase p { margin: .8mm 0 0; color: #3e5667; font-size: 8.7pt; }
+
+    .credential a { text-decoration: underline; text-decoration-color: #b8cbd4; }
+
+    .job { break-inside: avoid; }
+    .job-head { margin-bottom: 1.6mm; }
+    .job-title { margin: 0; color: var(--ink); font-size: 11.1pt; line-height: 1.25; }
+    .job-meta { margin-bottom: 2.2mm; color: var(--muted); font-size: 8.7pt; line-height: 1.42; }
+    .job-meta a { color: var(--navy); text-decoration: underline; text-decoration-color: #b8cbd4; }
 
     .bullets li {
       position: relative;
-      margin-bottom: 1.7mm;
-      padding-left: 4mm;
+      margin-bottom: 1.25mm;
+      padding-left: 3.7mm;
       color: #2d4051;
-      font-size: 9.15pt;
-      line-height: 1.42;
+      font-size: 8.85pt;
+      line-height: 1.38;
       break-inside: avoid;
     }
+    .bullets li:last-child { margin-bottom: 0; }
     .bullets li::before {
       content: "";
       position: absolute;
       left: .4mm;
-      top: 1.75mm;
-      width: 1.45mm;
-      height: 1.45mm;
+      top: 1.55mm;
+      width: 1.35mm;
+      height: 1.35mm;
       border-radius: 50%;
       background: var(--accent);
     }
-    .bullets strong { color: var(--ink); font-weight: 650; }
-    .compact .bullets li { margin-bottom: 1.35mm; font-size: 8.95pt; }
-    .group { margin-bottom: 4mm; }
-    .group:last-child { margin-bottom: 0; }
-    .group .subsection-title { padding-bottom: 1.2mm; border-bottom: .3mm solid var(--line); }
-
-    .tech-line {
-      margin-top: 2.4mm;
-      padding: 2mm 2.7mm;
-      border-radius: 1.2mm;
-      background: var(--soft);
-      color: #405567;
-      font-size: 8.2pt;
-      line-height: 1.45;
-    }
-    .tech-line strong { color: var(--navy); }
-    .tags { display: flex; flex-wrap: wrap; gap: 1.4mm; margin-top: 2mm; }
+    .tags { display: flex; flex-wrap: wrap; gap: 1.3mm; margin-top: 2.4mm; }
     .tag {
-      padding: .8mm 1.8mm;
+      padding: .75mm 1.7mm;
       border: .25mm solid #c8d9df;
       border-radius: 5mm;
       color: #335366;
       background: #f7fbfb;
-      font-size: 7.7pt;
+      font-size: 7.5pt;
       line-height: 1.3;
     }
 
-    .project {
-      margin-bottom: 3.2mm;
-      padding-bottom: 3mm;
-      border-bottom: .3mm solid var(--line);
-      break-inside: avoid;
+    .continuation-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 5mm;
+      margin-bottom: 5mm;
+      padding-bottom: 2.4mm;
+      border-bottom: .6mm solid var(--navy);
     }
-    .project:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
-    .project-head { display: flex; justify-content: space-between; gap: 5mm; align-items: baseline; }
-    .project h3 { margin: 0; color: var(--navy); font-size: 10.5pt; }
-    .project-date { color: var(--accent); font-size: 8.4pt; font-weight: 700; }
-    .project p { margin: 1mm 0; color: #354a5b; font-size: 8.9pt; }
-    .project-links { color: var(--muted); font-size: 8pt; }
-    .project-links a { text-decoration: underline; text-decoration-color: #b8cbd4; }
-
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-    .card {
-      margin-bottom: 3mm;
-      padding: 2.6mm 3mm;
+    .continuation-head strong { color: var(--navy); font-size: 10pt; }
+    .continuation-head span { color: var(--muted); font-size: 8pt; }
+    .remaining-jobs { display: grid; gap: 4mm; }
+    .job-card {
+      padding: 3.4mm 3.7mm;
       border: .3mm solid var(--line);
-      border-radius: 1.4mm;
+      border-radius: 1.5mm;
       background: #fbfcfd;
-      break-inside: avoid;
     }
-    .card h3 { margin: 0 0 1mm; color: var(--navy); font-size: 9.8pt; }
-    .card p { margin: 0 0 1mm; color: #3b5061; font-size: 8.7pt; }
-    .card p:last-child { margin-bottom: 0; }
-    .small { color: var(--muted); font-size: 8pt; }
-    .note {
-      padding: 2.4mm 3mm;
-      border-left: 1mm solid #83b9c0;
-      background: #f3f8f9;
-      color: #425b6b;
-      font-size: 8.5pt;
+    .job-card .job-meta { margin-bottom: 2.6mm; }
+    .placeholder {
+      min-height: 15mm;
+      padding: 3mm;
+      border: .3mm dashed #b8cbd4;
+      border-radius: 1.2mm;
+      background: var(--accent-soft);
+      color: var(--muted);
+      font-size: 8.8pt;
     }
 
     @page { size: A4 portrait; margin: 0; }
@@ -327,343 +230,125 @@
 </head>
 <body>
   <div class="print-bar" aria-label="Document actions">
-    <span>A4 · 6 pages · Print at 100% scale</span>
+    <span>A4 · 2 pages · Print at 100% scale</span>
     <button type="button" onclick="window.print()">Print / Save as PDF</button>
   </div>
 
   <main class="cv">
-    <section class="page" id="page-1" aria-label="CV page 1: Profile and core expertise">
+    <section class="page" id="page-1" aria-label="CV page 1: Profile, education and current experience">
       <header class="hero">
-        <div class="hero-top">
-          <div>
-            <h1>Chanchai<br>Charnataparporn</h1>
-            <div class="role">Backend Software Engineer</div>
-          </div>
-          <div class="hero-badge">Node.js · TypeScript<br>Java · Spring Boot<br>Cloud-native systems</div>
+        <h1 id="person-name">Chanchai Charnataparporn</h1>
+        <div class="role" id="person-role">Senior Software Engineer</div>
+        <div class="contact-row">
+          <span class="contact-item"><span class="contact-label">Phone:</span> +66 (0) 83 441 9565</span>
+          <span class="contact-item"><span class="contact-label">Email:</span> <a href="mailto:chanchai51142@gmail.com">chanchai51142@gmail.com</a></span>
+          <span class="contact-item"><span class="contact-label">web:</span> <a href="https://chanchai.dev/">chanchai.dev</a></span>
         </div>
         <div class="contact-row">
-          <span class="contact-item"><span class="contact-label">Phone</span>  +66 (0) 83 441 9565</span>
-          <span class="contact-item"><span class="contact-label">Email</span>  <a href="mailto:chanchai51142@gmail.com">chanchai51142@gmail.com</a></span>
-          <span class="contact-item"><span class="contact-label">Nationality</span>  Thai</span>
-        </div>
-        <div class="contact-row" style="margin-top:2mm">
-          <span class="contact-item"><span class="contact-label">GitHub</span>  <a href="https://github.com/chanchai134">github.com/chanchai134</a></span>
-          <span class="contact-item"><span class="contact-label">LinkedIn</span>  <a href="https://www.linkedin.com/in/chanchai134">linkedin.com/in/chanchai134</a></span>
+          <span class="contact-item"><span class="contact-label">GitHub:</span> <a href="https://github.com/chanchai134">github.com/chanchai134</a></span>
+          <span class="contact-item"><span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/chanchai134">linkedin.com/in/chanchai134</a></span>
         </div>
       </header>
 
-      <section class="section" aria-labelledby="profile-title">
-        <h2 class="section-title" id="profile-title">Professional Profile</h2>
-        <p class="summary">Backend software engineer with 5+ years of professional experience delivering transaction-heavy platforms across event ticketing, e-commerce, vending operations, and insurance. First-class honours Computer Engineering graduate with hands-on expertise in Node.js/TypeScript and Java/Spring Boot, payment and third-party integrations, event/data workflows, and back-office systems. Combines domain-driven design with practical strength in testing, cloud-native delivery, concurrency control, database performance, and production troubleshooting. Experienced in agile, cross-functional collaboration with QA, frontend/mobile engineers, solution architects, and business teams.</p>
-        <div class="stats" aria-label="Career highlights">
-          <div class="stat"><strong>5+ years</strong><span>Backend software engineering</span></div>
-          <div class="stat"><strong>4 domains</strong><span>Ticketing, commerce, vending &amp; insurance</span></div>
-          <div class="stat"><strong>First class</strong><span>Computer Engineering · GPA 3.82</span></div>
-        </div>
+      <section class="section" aria-labelledby="summary-title">
+        <h2 class="section-title" id="summary-title">Professional Summary</h2>
+        <p class="summary">Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver frontends, CI/CD pipelines, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and business stakeholders.</p>
       </section>
 
-      <section class="section" aria-labelledby="skills-title">
-        <h2 class="section-title" id="skills-title">Core Technical Expertise</h2>
-        <div class="skill-grid">
-          <article class="skill">
-            <h3>Languages &amp; Backend Frameworks</h3>
-            <p>TypeScript, JavaScript, Node.js, Express.js, NestJS, tRPC, Java, Spring Boot, JPA Criteria Builder, Feign, RestTemplate, Go, C#, ASP.NET Core MVC, Python, Kotlin.</p>
-          </article>
-          <article class="skill">
-            <h3>Architecture &amp; API Design</h3>
-            <p>Domain-Driven Design, hexagonal architecture, domain events, REST, GraphQL, OLTP, microservices, middleware, idempotency, optimistic locking, distributed concurrency control.</p>
-          </article>
-          <article class="skill">
-            <h3>Data, Search &amp; Caching</h3>
-            <p>SQL, PostgreSQL, MySQL, Prisma, Flyway, MongoDB, Redis, Elasticsearch, Cosmos DB, DynamoDB, query-plan analysis, indexing, partitioning, cursor pagination.</p>
-          </article>
-          <article class="skill">
-            <h3>Cloud, DevOps &amp; Integration</h3>
-            <p>AWS, Microsoft Azure, Docker, Kubernetes, Terraform, Flux CD, Helm, Kustomize, Buildkite, GitHub Actions, Maven/Nexus, Azure APIM, Firebase, Keycloak.</p>
-          </article>
-          <article class="skill">
-            <h3>Events, Payments &amp; Processing</h3>
-            <p>Apache Kafka, Azure Event Hubs, Azure Data Factory, SQS/SNS, Azure Queue Storage, Omise, PayPay, SMBC, QR/SmartPay, payment webhooks, CSV/PDF/email workflows, cron jobs.</p>
-          </article>
-          <article class="skill">
-            <h3>Quality, Security &amp; Observability</h3>
-            <p>Unit/integration/concurrency testing, k6, OpenTelemetry, Datadog, Dynatrace, WireMock, Mountebank, Postman, JWT, Redis-backed rate limiting, PII masking, Apache PDFBox.</p>
-          </article>
-        </div>
-      </section>
-
-      <footer class="page-footer"><span>Chanchai Charnataparporn · Comprehensive CV</span><span>Page 1 of 6</span></footer>
-    </section>
-
-    <section class="page" id="page-2" aria-label="CV page 2: Current insurance platform experience">
-      <header class="running-head"><strong>Chanchai Charnataparporn</strong><span>Backend Software Engineer · Current role in detail</span></header>
-
-      <section class="section">
-        <h2 class="section-title">Professional Experience · Continued</h2>
-        <div class="job-head">
-          <div>
-            <h3 class="job-title">OPN · Insurance &amp; Lead-Management Platforms</h3>
-            <p class="job-meta"><span class="company">Tech Combine Co., Ltd.</span> · Backend/API engineering, data integration, security, and performance</p>
-          </div>
-          <div class="date">Dec 2025 – Present</div>
-        </div>
-
-        <div class="group"><h3 class="subsection-title">Current Role Highlights</h3><ul class="bullets"><li><strong>Secure policy documents:</strong> built preview/download APIs with Digital SF360 access-token integration, Feign interceptors, and birthdate-based PDF encryption using Apache PDFBox; prepared penetration-testing collections and k6 load tests.</li>
-            <li><strong>Reliable concurrent processing:</strong> delivered preload API v3 with Redis concurrency controls, HTTP 409 handling, rollback support, event idempotency, and Kubernetes CronJob triggering.</li>
-            <li><strong>Azure data workflows:</strong> created Azure Data Factory datasets, pipelines, and triggers for delayed events and retention; published to Event Hubs, repaired lead dataflows, and documented downstream IPOS+ synchronization.</li>
-          </ul></div><div class="group">
-          <h3 class="subsection-title">Policy, Customer &amp; Agent Services</h3>
-          <ul class="bullets">
-            <li><strong>Coverage and policy servicing:</strong> implemented coverage-overview, category-summary, and policy-plan APIs with consent-service and Spider Chart integration, response transformation, sorting, and pagination.</li>
-            <li><strong>Coverage overrides:</strong> built override workflows with customer-agent relationship verification, database migrations, and upsert logic.</li>
-            <li><strong>Agent-leader enablement:</strong> extended authorized access across personal information, policy lists, Vitality documents, claim details, and claim payment information; added k6 tests and a performance report.</li>
-            <li><strong>Billing and copayment:</strong> enhanced premium-due, copayment, billing-notice, and billing-document APIs with pending-billing calculations, date constraints, third-party Feign integration, copayment filtering, and overdue-PA-policy exclusion.</li>
-            <li><strong>Back-office administration:</strong> delivered keyword search, null-sort handling, claim-notification migrations, and feature-toggle filtering for WRITING agency relationships.</li>
-          </ul>
-        </div>
-
-        <div class="group">
-          <h3 class="subsection-title">Security, Privacy &amp; Application Hardening</h3>
-          <ul class="bullets">
-            <li><strong>Personal-data protection:</strong> implemented customer/lead information masking, birthdate-protected PDF delivery, JWT email/public-header handling, and API collections for penetration testing.</li>
-            <li><strong>Shared API protection:</strong> implemented configurable Redis-backed rate limiting in a shared library and an external-API logging interceptor for operational traceability.</li>
-            <li><strong>Vulnerability remediation:</strong> addressed Prisma-scan CVEs and removed vulnerable policy-service APIs.</li>
-          </ul>
-        </div>
-
-        <div class="group">
-          <h3 class="subsection-title">Data, Performance &amp; Distributed Processing</h3>
-          <ul class="bullets">
-            <li><strong>Lead-pool performance:</strong> optimized province and distribution SQL, added indexes, produced k6 comparisons, reworked CPU-intensive queries, and resolved distribution plus accept/reject defects.</li>
-            <li><strong>Database design:</strong> created and migrated partitioned customer-agency and customer-agent-policy summary tables with solution-architect input; validated partition use through query plans and revised ranges/counts.</li>
-            <li><strong>Task and prospect services:</strong> built Cosmos DB-backed schedule/activity APIs with lead/customer connectors, filtering, sorting, recent-activity retrieval, APIM exposure, and query indexing.</li>
-            <li><strong>Recommendations and messaging:</strong> added task-recommendation summaries, category metadata, status updates, and Azure Queue Storage publication.</li>
-            <li><strong>Retention workflows:</strong> implemented a CronJob-triggered API deleting print-offer logs older than two years, including correct retrieval beyond 1,000 records; built an ADF pipeline for PII-configured deletion of campaign registrations older than one year.</li>
-          </ul>
-        </div>
-
-        <div class="tech-line"><strong>Technologies used:</strong> Java, Spring Boot 4, JPA Criteria Builder, Feign, RestTemplate, Node.js, SQL, Cosmos DB, Redis/Redlock, Flyway, Apache PDFBox, Azure Data Factory, Event Hubs, Azure Queue Storage, APIM, Kubernetes CronJobs, Maven/Nexus, k6, Mountebank, Postman, Dynatrace, Confluence.</div>
-      </section>
-
-      <footer class="page-footer"><span>Professional Experience · OPN</span><span>Page 2 of 6</span></footer>
-    </section>
-
-    <section class="page" id="page-3" aria-label="CV page 3: Platform, integration and reliability">
-      <header class="running-head"><strong>Chanchai Charnataparporn</strong><span>Backend Software Engineer · Platform, integration &amp; reliability</span></header>
-
-      <section class="section"><h2 class="section-title">Platform, Integration &amp; Reliability</h2><div class="group">
-          <h3 class="subsection-title">Integration, Reliability &amp; Delivery</h3>
-          <ul class="bullets">
-            <li><strong>Campaign and consent reliability:</strong> implemented prerequisite-consent flows with feature toggles and CRM integration; diagnosed and fixed expired-campaign leakage across mobile, back-office, deep-link, and Customer 360 journeys.</li>
-            <li><strong>Event-driven integration:</strong> built delayed-event ADF/Event Hubs processing for the 00:00–06:00 window; verified product/banner pipelines after CI/CD migration and documented production notification, customer-preload, policy, claim, and lead flows.</li>
-            <li><strong>Runtime modernization:</strong> upgraded the agent-customer service to Spring Boot 4, smoke-tested the upgrade, resolved associated Flyway behavior, and established missing Maven/Nexus dependencies.</li>
-            <li><strong>Engineering quality:</strong> partnered with QA on Mountebank stubs, test data, and SIT/UAT verification; contributed PR reviews, root-cause and performance reports, Confluence documentation, sprint demonstrations, and a PDF knowledge-sharing session.</li>
-            <li><strong>Additional TICKETIER support (Apr 2026):</strong> prevented simultaneous cancellations from exceeding ticket quota by implementing optimistic locking and tests, informed by research into Redis Redlock.</li>
-          </ul>
-        </div>
-
-        <div class="group"><h3 class="subsection-title">Platform Engineering Assignments · Tech Combine · 2025</h3><ul class="bullets">
-          <li><strong>Distributed tracing:</strong> added tRPC OpenAPI method/path metadata, service names, orderRef, and firebaseUid attributes to OpenTelemetry instrumentation across checkout-related APIs; set up Datadog and paired on a new APM gateway deployment to UAT with Flux CD and Kustomize.</li>
-          <li><strong>Japan payment integrations:</strong> prototyped PayPay merchant charging with its SDK and apm-gateway, configured UAT payment-adapter settings, implemented a Life credit-card non-3DS adapter, and validated ACS/3DS behavior locally and on staging.</li>
-          <li><strong>SMBC transfer infrastructure:</strong> implemented WireMock responses for tokens, transfers, and approvals; created Buildkite image-build/ECR pipelines and Flux CD Helm releases for staging/UAT; resolved DNS and Kubernetes port-binding issues and documented service setup.</li>
-          <li><strong>Dynamic onboarding/forms on AWS:</strong> provisioned DynamoDB, KMS, SQS, SNS, and IAM/IRSA resources in terraform-live; moved configuration to environment variables, seeded DynamoDB, fixed SNS/SQS policies, paired on Keycloak realm/client setup, and customized Buildkite/Flux CD UAT delivery.</li>
+      <section class="section" aria-labelledby="education-title">
+        <h2 class="section-title" id="education-title">Education and certificates</h2>
+        <ul class="bullets credentials">
+          <li class="credential split-line">
+            <span class="split-left">Bachelor of Engineering (Computer Engineering) with First Class Honours, Kasetsart University (GPA 3.82)</span>
+            <span class="split-right">2016 - 2020</span>
+          </li>
+          <li class="credential split-line">
+            <span class="split-left">AWS Certified Solutions Architect – Associate <a href="https://www.credly.com/badges/4d15e4cd-f57f-4dab-9e56-55ccfd97ed83">view certificate</a></span>
+            <span class="split-right">2024 - 2027</span>
+          </li>
+          <li class="credential split-line">
+            <span class="split-left">AWS Certified Cloud Practitioner <a href="https://www.credly.com/badges/af830fac-694a-48d8-b9a9-e6078e781cd9">view certificate</a></span>
+            <span class="split-right">2021 - 2027</span>
+          </li>
         </ul>
-        <div class="tags" aria-label="Platform technologies">
-          <span class="tag">OpenTelemetry</span><span class="tag">Datadog</span><span class="tag">Flux CD</span><span class="tag">Kustomize</span><span class="tag">Buildkite</span><span class="tag">AWS ECR</span><span class="tag">Terraform</span><span class="tag">DynamoDB</span><span class="tag">KMS</span><span class="tag">SQS/SNS</span><span class="tag">IAM/IRSA</span><span class="tag">Keycloak</span><span class="tag">WireMock</span><span class="tag">PayPay</span><span class="tag">SMBC</span>
-        </div>
-      </div><div class="group">
-          <h3 class="subsection-title">Performance, Reliability &amp; Maintainability</h3>
-          <ul class="bullets">
-            <li><strong>Database performance:</strong> used Query Insights and Prisma analysis to identify N+1 behavior and lock waits; added Order, OrderLine, and Ticket indexes, replaced generated pagination counts with raw SQL, and deployed performance fixes for load testing.</li>
-            <li><strong>Schema rework:</strong> removed foreign keys across order/suborder tables as requested by the database expert, updated weak-relation loading, repaired integration tests, and parallelized relation fetching.</li>
-            <li><strong>Checkout concurrency:</strong> separated checkout Redis from caching Redis, added cluster reconnection strategies for dead sockets, corrected showtime-key cleanup, and tested five available tickets against ten simultaneous purchase attempts.</li>
-            <li><strong>Runtime and code health:</strong> upgraded the payment API toward Node.js 22 LTS, replaced implicit any types, standardized time configuration, stabilized flaky tests, and moved external-ticket imports to publish/subscribe.</li>
-            <li><strong>Memory-leak resolution:</strong> traced a Wix plugin backend leak to production-unsafe express-session MemoryStore and removed the unused session/Passport LocalStrategy components.</li>
-          </ul>
-        </div>
-
-        </section><footer class="page-footer"><span>Platform, Integration &amp; Reliability</span><span>Page 3 of 6</span></footer>
-    </section>
-
-    <section class="page" id="page-4" aria-label="CV page 4: Ticketing, payments and Forth Vending">
-      <header class="running-head"><strong>Chanchai Charnataparporn</strong><span>Backend Software Engineer · Ticketing, payments &amp; earlier role</span></header>
-
-      <section class="section">
-        <h2 class="section-title">TICKETIER · Commerce &amp; Payment Platforms</h2>
-        <div class="job-head">
-          <div>
-            <h3 class="job-title">Backend Engineer <span class="company">· Tech Combine Co., Ltd.</span></h3>
-            <p class="job-meta">Node.js/TypeScript APIs for the <a href="https://www.ticketier.com/">TICKETIER</a> storefront and back office, payment operations, platform reliability, and adjacent payment services.</p>
-          </div>
-          <div class="date">May 2024 – Nov 2025</div>
-        </div>
-
-        <div class="group">
-          <h3 class="subsection-title">Payments, Orders &amp; Refunds</h3>
-          <ul class="bullets">
-            <li><strong>Saved-payment checkout:</strong> developed APIs to list, mark primary, and delete payment methods; integrated Omise tokens, customers, and saved cards into credit-card and alternative-method checkout flows with integration tests.</li>
-            <li><strong>Refund lifecycle:</strong> implemented refunding, refunded, cancel-refund, and multi-ticket refund workflows; restored reserved-ticket quantities and prevented refunded tickets from proceeding through pre-registration or check-in.</li>
-            <li><strong>Bulk refund processing:</strong> built CSV-based status processing with Google Cloud Storage, success/partial-failure/all-failure email notifications, batch-import tests, and refund-export formatting.</li>
-            <li><strong>QR and installment payments:</strong> extended QR reuse across full-payment and SmartPay flows, including suborders/lines; added installment payment windows, second-installment mobile banking, QR-only checkout-time extensions, and configurable cash-installment cron timing.</li>
-            <li><strong>Payment reliability:</strong> implemented retry handling for inconsistent webhook data by retrieving payment information from Omise; resolved order-payment, QR switching, paid-but-expired, promotion-confirmation, and back-office mark-as-paid defects.</li>
-            <li><strong>Order operations and reporting:</strong> enhanced order APIs, summaries, filters, CSV exports, tax/installment fields, outstanding totals, canceled-order behavior, PDF/email output, and bilingual notifications.</li>
-          </ul>
-        </div>
-
-        <div class="group">
-          <h3 class="subsection-title">Registration, Attendee &amp; Promotion Journeys</h3>
-          <ul class="bullets">
-            <li><strong>Registration integrity:</strong> added phone OTP and exact-search behavior, gate/showtime/ticket consistency validation, wristband changes, external-ticket bulk check-in fixes, and case-insensitive duplicate-gate prevention.</li>
-            <li><strong>PAM and identity:</strong> delivered marketing-consent refactoring, vendor-app tracking, international-user handling, username synchronization, attendee validation, and pre-registration grouping.</li>
-            <li><strong>Attendee-name capability:</strong> delivered event settings, order/ticket detail APIs, back-office details, and share-to-friends support; replaced the legacy ticket-owner flag and refactored ticket-creation/notification subscribers.</li>
-            <li><strong>Authorization and promotions:</strong> introduced active-user middleware using a factory pattern, enforced online-order checkout constraints, blocked deletion of used promotions, and added case-insensitive promotion-code search.</li>
-            <li><strong>Marketing and pre-registration:</strong> built cron/REST/CSV notification workflows with response files, bucket uploads, vendor webhooks, and platform-level pre-registration detail/history APIs.</li>
-          </ul>
-        </div>
-
-        <div class="tech-line"><strong>Technologies used:</strong> Node.js, TypeScript, Express, tRPC, Prisma, SQL, Redis, JWT, Omise, QR payments, SmartPay, mobile banking, Google Cloud Storage, Firebase, CSV/PDF/email processing, cron jobs, cursor pagination, GitHub Actions, integration/concurrency testing.</div>
       </section>
 
-      <section class="section"><h2 class="section-title">Earlier Professional Experience</h2><article class="job">
-          <div class="job-head">
-            <h3 class="job-title">Software Engineering II / Backend <span class="company">· Forth Vending Co., Ltd. (TAO-BIN)</span></h3>
-            <div class="date">Sep 2023 – Apr 2024</div>
-          </div>
-          <p class="job-meta">Vendii back-office platform · 8 months</p>
-          <ul class="bullets">
-            <li>Enhanced and maintained <a href="https://www.vendii.io/">Vendii</a>, a back-office platform used by multiple TAO-BIN vending-machine teams for machine-related operations.</li>
-            <li>Applied Domain-Driven Design with particular use of domain events to support business workflows and maintainable backend behavior.</li>
-            <li>Worked in an English-using engineering environment, collaborating on requirements, implementation, and ongoing platform maintenance.</li>
-          </ul>
-          <div class="tech-line"><strong>Relevant stack:</strong> Node.js, TypeScript, NestJS, Domain-Driven Design, domain events, hexagonal architecture, SQL, Docker.</div>
-        </article>
-
-        </section><footer class="page-footer"><span>TICKETIER &amp; Earlier Role</span><span>Page 4 of 6</span></footer>
-    </section>
-
-    <section class="page" id="page-5" aria-label="CV page 5: Earlier career and selected projects">
-      <header class="running-head"><strong>Chanchai Charnataparporn</strong><span>Backend Software Engineer · Earlier career &amp; selected projects</span></header>
-
-      <section class="section"><h2 class="section-title">Earlier Professional Experience</h2><article class="job">
-          <div class="job-head">
-            <h3 class="job-title">Software Engineer / Backend <span class="company">· King Power Click Co., Ltd.</span></h3>
-            <div class="date">Jul 2020 – Jul 2022</div>
-          </div>
-          <p class="job-meta">E-commerce product information and discovery · 2 years</p>
-          <ul class="bullets">
-            <li>Developed backend services for product information management in an e-commerce business, delivering APIs against business requirements with Domain-Driven Design and strict unit-testing practices.</li>
-            <li>Provided a new product-search mechanism using Elasticsearch to support product discovery.</li>
-            <li>Implemented components of personalized product recommendation and associated backend API functionality.</li>
-            <li>Shared engineering knowledge with colleagues on tools including Elasticsearch and Apache Kafka.</li>
-          </ul>
-          <div class="tech-line"><strong>Relevant stack:</strong> Node.js, TypeScript, NestJS, Elasticsearch, Apache Kafka, MongoDB, PostgreSQL/SQL, Redis, GraphQL, Docker, Domain-Driven Design, unit testing.</div>
-        </article>
-
+      <section class="section" aria-labelledby="experience-title">
+        <h2 class="section-title" id="experience-title">Experience</h2>
         <article class="job">
-          <div class="job-head">
-            <h3 class="job-title">Data Science Intern <span class="company">· PTT Digital Solutions Co., Ltd.</span></h3>
-            <div class="date">Jun 2019 – Aug 2019</div>
+          <div class="job-head split-line">
+            <h3 class="job-title split-left">Experience Backend Engineer</h3>
+            <div class="split-right">1 year+ (December 2025 - Now)</div>
           </div>
-          <p class="job-meta">Research and development internship · 3 months</p>
+          <p class="job-meta">AIA Co., Ltd. (AIA Thailand) — Outsourced via Tech Combine Co., Ltd.<br>Product: <a href="https://www.aia.co.th/th/help-support/health-services/aia-one">AIA ONE</a><br></p>
           <ul class="bullets">
-            <li>Independently researched and developed a deep-learning project to predict ratings from Thai-language restaurant reviews.</li>
-            <li>Crawled and prepared data, evaluated candidate models from university research resources for accuracy, and implemented the resulting prediction program.</li>
+            <li>Built and maintained Java Spring Boot microservices for AIA ONE mobile application, exposing their APIs through a unified Azure API Management (APIM) gateway and enabling asynchronous, event-driven communication via Azure Event Hubs.</li>
+            <li>Implemented Redis across microservices for low-latency caching, distributed rate limiting, and request idempotency, protecting services from duplicate transactions.</li>
+            <li>Enhanced full-stack features for the internal back-office React web application, ensuring seamless API integration.</li>
+            <li>Improved application performance by using k6 load testing to identify bottlenecks and tuning Microsoft SQL Server through execution plan analysis, table partitioning, and index optimization.</li>
+            <li>Hardened application security by remediating vulnerabilities detected by Veracode (SAST/DAST) and Prisma Cloud scans.</li>
+            <li>Designed and scheduled Azure Data Factory (ADF) pipelines to synchronize data from the AIA Datalake into core application databases and automate large-scale data retention and deletion, reducing storage overhead while maintaining regulatory compliance.</li>
+            <li>Leveraged GitHub Copilot to accelerate feature implementation, unit test generation, and code reviews across services.</li>
           </ul>
-        </article>
-      </section><section class="section">
-        <h2 class="section-title">Selected Projects</h2>
-
-        <article class="project">
-          <div class="project-head"><h3>Resume Android Application</h3><span class="project-date">2023 · Individual</span></div>
-          <p>An Android presentation of the resume, reflecting an interest in mobile application architecture alongside backend engineering.</p>
-          <p><strong>Technical skills:</strong> Kotlin, Coroutines, Flow/LiveData, Room, DataStore, Retrofit, GraphQL, Jetpack Compose, ViewModel, View Binding, Data Binding, Android Studio.</p>
-          <div class="project-links"><a href="https://github.com/chanchai134/resume-android">GitHub: chanchai134/resume-android</a> · <a href="https://youtu.be/ilr0QjcC9wA">Demonstration video</a></div>
-        </article>
-
-        <article class="project">
-          <div class="project-head"><h3>LiveVOD-KU</h3><span class="project-date">2020 · Pair project</span></div>
-          <p>Live-streaming and video-on-demand website. Responsible for backend development using Node.js/Express and MongoDB, with Docker and React in the project stack.</p>
-          <div class="project-links"><a href="https://ecourse.cpe.ku.ac.th/projar/project/details/1417">Kasetsart University project record</a></div>
-        </article>
-
-        <article class="project">
-          <div class="project-head"><h3>Tea Kingdom</h3><span class="project-date">2018 · Team project</span></div>
-          <p>E-commerce website developed in a full-stack role with Node.js/Express, MongoDB, and React; originally deployed on Heroku.</p>
-          <div class="project-links"><a href="https://github.com/chanchai134/tea-kingdom">GitHub: chanchai134/tea-kingdom</a></div>
-        </article>
-
-        <article class="project">
-          <div class="project-head"><h3>TheForest</h3><span class="project-date">2017 · Individual</span></div>
-          <p>An Angry Birds-style game developed with Python and the Arcade library.</p>
-          <div class="project-links"><a href="https://github.com/chanchai134/TheForest">GitHub: chanchai134/TheForest</a></div>
+          <div class="tags">
+            <span class="tag">Java Spring Boot</span>
+            <span class="tag">React</span>
+            <span class="tag">GitHub Copilot</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Microsoft SQL Server</span>
+            <span class="tag">Redis</span>
+            <span class="tag">k6</span>
+            <span class="tag">vulnerability</span>
+            <span class="tag">mitmproxy</span>
+          </div>
         </article>
       </section>
-
-      <footer class="page-footer"><span>Earlier Career &amp; Selected Projects</span><span>Page 5 of 6</span></footer>
     </section>
-  <section class="page" id="page-6" aria-label="CV page 6: Education, credentials and additional information"><header class="running-head"><strong>Chanchai Charnataparporn</strong><span>Education, credentials &amp; additional information</span></header><section class="section">
-        <h2 class="section-title">Education</h2>
-        <article class="project">
-          <div class="project-head"><h3>Bachelor of Computer Engineering · Kasetsart University</h3><span class="project-date">2016 – 2020</span></div>
-          <p>First Class Honours · GPA 3.82</p>
-        </article>
-        <article class="project">
-          <div class="project-head"><h3>Mathematically Gifted Program · Suankularb Wittayalai School</h3><span class="project-date">2010 – 2015</span></div>
-          <p>High school education.</p>
-        </article>
-      </section>
 
-      <div class="two-col">
-        <section class="section">
-          <h2 class="section-title">Certifications</h2>
-          <article class="card">
-            <h3>AWS Certified Solutions Architect – Associate</h3>
-            <p>Amazon Web Services</p>
-            <p><a href="https://www.credly.com/badges/4d15e4cd-f57f-4dab-9e56-55ccfd97ed83">View credential on Credly</a></p>
-          </article>
-          <article class="card">
-            <h3>AWS Certified Cloud Practitioner</h3>
-            <p>Amazon Web Services · Expired October 2024</p>
-            <p><a href="https://www.credly.com/badges/b4256198-3a10-4ca4-b211-6a5679d9fcbd">View credential on Credly</a></p>
-          </article>
-        </section>
+    <section class="page" id="page-2" aria-label="CV page 2: Remaining experience">
+      <header class="continuation-head">
+        <strong>Chanchai Charnataparporn</strong>
+        <span>Senior Software Engineer</span>
+      </header>
 
-        <section class="section">
-          <h2 class="section-title">Academic Awards</h2>
-          <article class="card">
-            <h3>Highest GPA in Computer Engineering</h3>
-            <p>Outstanding academic student · Academic year 2018</p>
-            <p>Annual GPA 3.80</p>
-          </article>
-          <article class="card">
-            <h3>Highest GPA in Computer Engineering</h3>
-            <p>Outstanding academic student · Academic year 2017</p>
-            <p>Annual GPA 3.72</p>
-          </article>
-        </section>
+      <div class="remaining-jobs">
+        <article class="job job-card">
+          <div class="job-head split-line">
+            <h3 class="job-title split-left">Node.js Developer</h3>
+            <div class="split-right">1 year 7 months (May 2024 – November 2025)</div>
+          </div>
+          <p class="job-meta">Omise Co., Ltd.<br>Outsourced via Tech Combine Co., Ltd.</p>
+          <p class="placeholder">TODO</p>
+        </article>
+
+        <article class="job job-card">
+          <div class="job-head split-line">
+            <h3 class="job-title split-left">Software Engineering II</h3>
+            <div class="split-right">8 months (September 2023 - April 2024)</div>
+          </div>
+          <p class="job-meta">Forth Vending Co., Ltd (TAO-BIN)</p>
+          <p class="placeholder">TODO</p>
+        </article>
+
+        <article class="job job-card">
+          <div class="job-head split-line">
+            <h3 class="job-title split-left">Software Engineering</h3>
+            <div class="split-right">2 years (July 2020 - July 2022)</div>
+          </div>
+          <p class="job-meta">King Power Click Co., Ltd</p>
+          <p class="placeholder">TODO</p>
+        </article>
+
+        <article class="job job-card">
+          <div class="job-head split-line">
+            <h3 class="job-title split-left">Data Scientist - Internship</h3>
+            <div class="split-right">3 months (June 2019 – August 2019)</div>
+          </div>
+          <p class="job-meta">PTT Digital Solutions Co., Ltd</p>
+          <p class="placeholder">TODO</p>
+        </article>
       </div>
-
-      <section class="section"><h2 class="section-title">Knowledge Sharing &amp; Ways of Working</h2><ul class="bullets"><li><strong>Knowledge transfer:</strong> delivered TICKETIER backend handover sessions to the SNL team, supported local environment setup, and documented attendee and pre-registration features.</li><li><strong>Technical enablement:</strong> ran Japan payout and marketing-notification knowledge-sharing/demo sessions; authored SMBC setup, integration, performance, root-cause, and Confluence documentation.</li><li><strong>Collaborative delivery:</strong> presented sprint reviews and technical POCs, reviewed pull requests, paired with QA on SIT/UAT and load testing, and contributed throughout sprint planning, refinement, reviews, and retrospectives.</li></ul></section><section class="section">
-        <h2 class="section-title">Additional Information</h2>
-        <div class="two-col">
-          <article class="card">
-            <h3>Languages &amp; Collaboration</h3>
-            <p><strong>Thai:</strong> Native language</p>
-            <p><strong>English:</strong> Used in engineering meetings, documentation, knowledge sharing, and cross-functional delivery.</p>
-            <p><strong>Working style:</strong> Cooperative, adaptable, fast learner, organized in time management, and learns effectively through hands-on implementation.</p>
-          </article>
-          <article class="card">
-            <h3>Personal &amp; International Experience</h3>
-            <p><strong>Date of birth:</strong> 14 April 1998</p>
-            <p><strong>Nationality:</strong> Thai</p>
-            <p><strong>Summer camp:</strong> Cambridge Regional College, United Kingdom · 2013</p>
-            <p><strong>Professional interests:</strong> Backend architecture, distributed systems, cloud-native platforms, Android development, and continuous technical learning.</p>
-          </article>
-        </div>
-      </section>
-
-      <div class="note"><strong>Engineering approach:</strong> Build explicit business behavior, protect transactional correctness, test failure and concurrency paths, make systems observable, and leave useful documentation for the next engineer.</div>
-
-      <footer class="page-footer"><span>Education, Credentials &amp; Additional Information</span><span>Page 6 of 6</span></footer></section></main>
+    </section>
+  </main>
 </body>
 </html>
