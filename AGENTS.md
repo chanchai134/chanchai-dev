@@ -22,7 +22,7 @@ PDFs are on-demand exports only; they are not repository artifacts. Never add `c
 - Preserve spelling, capitalization, punctuation, hyphen and dash characters, numbers, link text, URLs, and credential IDs exactly. HTML escaping is allowed when required to represent the same visible text.
 - Render Markdown links as clickable links with the exact source label and destination.
 - `left text -> right text` means a two-sided row: render the left and right text in a flex container with `justify-content: space-between`. Do not display the `->` marker or alter either side's wording.
-- `<br>` means a normal line break. Render it as an HTML `<br>` or an equivalent visible newline; do not display the marker literally.
+- `<br>` marks a visible line break. For job/company metadata, preserve the owner's current paragraph style: end the current `<p class="job-meta">` at the source `<br>` and put the following metadata line in its own `<p class="job-meta">`, rather than placing a literal `<br>` inside a shared paragraph. If no further metadata line follows, close the paragraph and continue to the next list or role without adding an empty paragraph. Do not display the `<br>` marker literally or change the metadata wording.
 - `### text1, text2, text3` means a tag list. Render each comma-separated value as its own `<span class="tag">...</span>` in source order, trimming only the whitespace around each value. Do not display the `###` marker or commas.
 - Structural print controls are presentation elements, not CV content. Do not add career summaries, skill groups, job details, projects, or other substantive content that is absent from `base.md`.
 - Do not publish raw resumes, timesheets, work logs, addresses, or other private source material without explicit user approval. The origin repository is public at the time this guide was written.
@@ -86,7 +86,7 @@ A content or layout change requires a real-browser print-layout check before sta
 - Inspect all pages for clipping, overlap, blank pages, broken flex rows, bottom-edge overflow, and unreadably dense content.
 - Confirm the Experience heading and complete first role, including all bullets and tags, fit together on page 1, and the four other roles remain on page 2 without a duplicated heading.
 - Confirm section endings are present, no content is truncated, and no CV name/page-number footers were reintroduced.
-- Compare the rendered CV text and links against `base.md`, including every `->` row, `<br>` newline, tag, date, URL, and literal `TODO`; ensure no legacy CV content remains.
+- Compare the rendered CV text and links against `base.md`, including every `->` row, `<br>` metadata paragraph boundary, tag, date, URL, and literal `TODO`; ensure no legacy CV content remains.
 - Check that no PDF, private Office document, AWS credential, ZIP archive, test file, or SAM/build directory is staged.
 - Do not add or run a CI test suite for this deployment.
 - Lint the GitHub Actions YAML when a linter is available and verify the ZIP contains only `chanchai.html` and `index.cjs`.

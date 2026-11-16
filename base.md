@@ -15,7 +15,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 # Experience
  - ## Experience Backend Engineer -> 1 year+ (December 2025 - Now)
    AIA Co., Ltd. (AIA Thailand) — Outsourced via Tech Combine Co., Ltd.<br>
-   Product: [AIA ONE](https://www.aia.co.th/th/help-support/health-services/aia-one)<br>
+   Product: [AIA ONE](https://www.aia.co.th/th/help-support/health-services/aia-one)
    - Built and maintained Java Spring Boot microservices for AIA ONE mobile application, exposing their APIs through a unified Azure API Management (APIM) gateway and enabling asynchronous, event-driven communication via Azure Event Hubs.
    - Implemented Redis across microservices for low-latency caching, distributed rate limiting, and request idempotency, protecting services from duplicate transactions.
    - Enhanced full-stack features for the internal back-office React web application, ensuring seamless API integration.
