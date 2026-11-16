@@ -1,18 +1,19 @@
 # Chanchai Charnataparporn — CV
 
-A comprehensive backend software engineer CV built as a self-contained HTML document with a six-page A4 print layout. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
+A senior software engineer CV sourced from `base.md` and presented as a self-contained HTML document with a two-page A4 print layout and no CV page footers. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `chanchai.html` | Editable CV source with embedded CSS, print layout, and PDF export button |
+| `base.md` | Canonical CV content and wording |
+| `chanchai.html` | Presentation source with embedded CSS, two-page print layout, and PDF export button; its content mirrors `base.md` |
 | `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
-| `AGENTS.md` | Maintenance and staging instructions for coding agents |
+| `AGENTS.md` | Content-mapping, maintenance, and staging instructions for coding agents |
 | `.gitignore` | Exclusions for private sources and generated files |
 
-The CV covers professional experience, technical skills, platform engineering, selected projects, education, certifications, and academic awards. The HTML and Lambda handler have no external runtime dependencies.
+The CV contains the professional summary, education and certificates, and experience from `base.md`. Literal `TODO` entries remain visible until the source is updated. The HTML and Lambda handler have no external runtime dependencies.
 
 ## Open the CV
 
@@ -38,9 +39,18 @@ The stylesheet defines A4 dimensions and explicit page breaks. Do not use “Fit
 
 ## Update the CV
 
-Edit `chanchai.html` and check every page in the browser's print preview. When a PDF is needed, export a fresh copy with **Print / Save as PDF**. Do not add the exported PDF to Git.
+Edit wording in `base.md` first, then mirror it into `chanchai.html` without rephrasing or adding content. Edit `chanchai.html` directly only for presentation changes. There is no generator or build step; the two files are synchronized manually.
 
-Each page is an explicit `<section class="page">`. When adding or removing pages, update page numbering and the print instructions as well.
+Apply these source mappings exactly:
+
+- `left text -> right text`: render a flex row with `justify-content: space-between`, preserving both text sides and hiding the `->` marker.
+- `<br>`: render a normal HTML line break.
+- `### text1, text2, text3`: render each comma-separated value as a separate `<span class="tag">...</span>` in source order, without the `###` marker or commas.
+- Markdown links: preserve the exact label and URL as a clickable link.
+
+Preserve all other wording and literal `TODO` entries exactly. Check every page in a real browser with print media enabled. When a PDF is needed, export a fresh copy with **Print / Save as PDF** and do not add it to Git.
+
+Each page is an explicit `<section class="page">`. The current two-page layout places profile/education plus the Experience heading and complete first role on page 1, and the four remaining roles on page 2, with compact headers and no CV name/page-number footers. Keep the Experience heading and first role together on page 1, without duplicating the heading on page 2. When adding or removing pages, update the print-bar instructions, this guide, and `AGENTS.md`. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
 
 ## AWS Lambda deployment
 
