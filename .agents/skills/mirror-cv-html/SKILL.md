@@ -63,6 +63,8 @@ Do not fill missing fields from older CVs or other career sources. Do not silent
 | `- ### tag1, tag2` | One `<span class="tag">` per trimmed comma-separated value inside `.tags`, preserving exact spelling and source order; omit `###` and commas |
 | `[label](url)` | `<a href="url">label</a>` with the exact label and destination |
 | Bare `TODO` beneath a role | A normal paragraph containing exactly `TODO` |
+| `# Individual Projects` after experience roles | An optional section after all experience; use same `.job` structure without duration |
+| `- ## project title` | A project heading; render as `h3.job-title.split-left` without a `.split-right` duration |
 
 Do not invent additional Markdown transformations. Keep inline links inside their original fields; do not append them elsewhere in the document.
 

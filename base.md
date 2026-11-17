@@ -58,8 +58,14 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 
  - ## Data Scientist (Internship) -> 3 months (June 2019 – August 2019)
    PTT Digital Solutions Co., Ltd
-   Product: A CLI program that rates Thai-language food review sentences from 1 to 5
-   - Independently developed a deep-learning project to predict ratings from Thai-language restaurant reviews
+   Product: A CLI program that rates Thai-language food review sentences from 1 to 5.
+   - Independently developed a deep-learning project to predict ratings from Thai-language restaurant reviews.
    - Crawled and preprocessed food review datasets from Wongnai and other review platforms.
    - Evaluated and benchmarked candidate deep learning models from university research databases to select optimal architectures for food review classification.
    - ### Python, Jupyter Notebook, Keras, web crawler
+
+# Individual Projects
+ - ## Resume Android Application
+   An Android presentation of the resume, reflecting an interest in mobile application architecture alongside backend engineering.<br>
+   [GitHub: chanchai134/resume-android](https://github.com/chanchai134/resume-android) · [Demonstration video](https://youtu.be/ilr0QjcC9wA)
+   - ### Kotlin, Jetpack Compose, Room, Dagger

@@ -28,6 +28,7 @@ CONTACT_LABELS = (
 )
 SUMMARY_HEADING = "# Professional Summary"
 EDUCATION_HEADING = "# Education and certificates"
+PROJECTS_HEADING = "# Individual Projects"
 EXPERIENCE_HEADING = "# Experience"
 CONTACT_PATTERN = re.compile(
     r"(?<!\S)(" + "|".join(re.escape(label) for label in CONTACT_LABELS) + r"):"
@@ -59,12 +60,20 @@ class Job:
 
 
 @dataclass(frozen=True)
+class Project:
+    title: str
+    # Entries are (kind, value), where kind is metadata, bullet, tags, or placeholder.
+    entries: tuple[tuple[str, str | tuple[str, ...]], ...]
+
+
+@dataclass(frozen=True)
 class CV:
     name: str
     role: str
     contact_rows: tuple[tuple[Contact, ...], ...]
     summary: tuple[str, ...]
     education: tuple[SplitRow, ...]
+    projects: tuple[Project, ...]
     jobs: tuple[Job, ...]
 
 
@@ -156,6 +165,9 @@ def parse_base(source: str) -> CV:
         fail(len(lines), f"missing '{EXPERIENCE_HEADING}'")
     if not education:
         fail(index + 1, "at least one education entry is required")
+    # Don't increment index here - we're pointing at EXPERIENCE_HEADING
+    
+    # Skip EXPERIENCE_HEADING
     index += 1
 
     jobs = []
@@ -164,6 +176,9 @@ def parse_base(source: str) -> CV:
         if not line.strip():
             index += 1
             continue
+        if line.startswith("# "):
+            # Found a new section (e.g., "# Individual Projects"), stop parsing jobs
+            break
         if not line.startswith(" - ## "):
             fail(index + 1, "expected a role beginning with ' - ## '")
         title_row = split_row(line[6:], index + 1)
@@ -175,7 +190,9 @@ def parse_base(source: str) -> CV:
                 index += 1
                 continue
             if line.startswith("# "):
-                fail(index + 1, "additional sections are not supported")
+                # Found a new section (e.g., "# Individual Projects"), exit inner loop
+                # Outer loop will handle it
+                break
             if not line.startswith("   ") or line.startswith("    "):
                 fail(index + 1, "role content must use exactly three leading spaces")
             body = line[3:]
@@ -201,6 +218,54 @@ def parse_base(source: str) -> CV:
         jobs.append(Job(title_row.left, title_row.right, tuple(entries)))
     if not jobs:
         fail(len(lines), "at least one experience role is required")
+    
+    # Parse projects (optional, after jobs)
+    projects = []
+    if index < len(lines) and lines[index] == PROJECTS_HEADING:
+        index += 1  # Skip PROJECTS_HEADING
+        while index < len(lines):
+            line = lines[index]
+            if not line.strip():
+                index += 1
+                continue
+            if line.startswith("# "):
+                # No more sections after projects expected
+                fail(index + 1, "additional sections after projects are not supported")
+            if not line.startswith(" - ## "):
+                fail(index + 1, "expected a project beginning with ' - ## '")
+            title = required_field(line[6:], index + 1, "project title")
+            index += 1
+            entries = []
+            while index < len(lines) and not lines[index].startswith(" - ## "):
+                line = lines[index]
+                if not line.strip():
+                    index += 1
+                    continue
+                if line.startswith("# "):
+                    fail(index + 1, "additional sections are not supported")
+                if not line.startswith("   ") or line.startswith("    "):
+                    fail(index + 1, "project content must use exactly three leading spaces")
+                body = line[3:]
+                if body.startswith("- ### "):
+                    raw_tags = body[6:]
+                    tags = tuple(tag.strip() for tag in raw_tags.split(","))
+                    if not raw_tags or any(not tag for tag in tags):
+                        fail(index + 1, "tag lists must contain non-empty comma-separated values")
+                    entries.append(("tags", tags))
+                elif body.startswith("- "):
+                    bullet = required_field(body[2:], index + 1, "bullet")
+                    entries.append(("bullet", bullet))
+                elif body == "TODO":
+                    entries.append(("placeholder", body))
+                else:
+                    if "<br>" in body:
+                        if body.count("<br>") != 1 or not body.endswith("<br>"):
+                            fail(index + 1, "<br> is supported only once at the end of metadata")
+                        body = body[:-4]
+                    metadata = required_field(body, index + 1, "metadata")
+                    entries.append(("metadata", metadata))
+                index += 1
+            projects.append(Project(title, tuple(entries)))
 
     return CV(
         name=name,
@@ -208,6 +273,7 @@ def parse_base(source: str) -> CV:
         contact_rows=tuple(contact_rows),
         summary=tuple(summary),
         education=tuple(education),
+        projects=tuple(projects),
         jobs=tuple(jobs),
     )
 
@@ -327,6 +393,11 @@ def render_main(cv: CV) -> str:
             "      </ul>",
             "    </section>",
             "",
+        ]
+    )
+    
+    lines.extend(
+        [
             '    <section class="section" aria-labelledby="experience-title">',
             '      <h2 class="section-title" id="experience-title">Experience</h2>',
         ]
@@ -369,7 +440,57 @@ def render_main(cv: CV) -> str:
         lines.append("")
     if lines[-1] == "":
         lines.pop()
-    lines.extend(["    </section>", "  </main>"])
+    lines.extend(["    </section>", ""])
+    
+    # Render projects section if there are any
+    if cv.projects:
+        lines.extend(
+            [
+                '    <section class="section" aria-labelledby="projects-title">',
+                '      <h2 class="section-title" id="projects-title">Individual Projects</h2>',
+            ]
+        )
+        for project in cv.projects:
+            lines.extend(
+                [
+                    '      <article class="job">',
+                    '        <div class="job-head split-line">',
+                    f'          <h3 class="job-title split-left">{inline_html(project.title)}</h3>',
+                    '        </div>',
+                ]
+            )
+            index = 0
+            while index < len(project.entries):
+                kind, value = project.entries[index]
+                if kind == "metadata":
+                    lines.append(f'        <p class="job-meta">{inline_html(str(value))}</p>')
+                elif kind == "placeholder":
+                    lines.append(f"        <p>{html.escape(str(value))}</p>")
+                elif kind == "tags":
+                    if not isinstance(value, tuple):
+                        raise SyncError("tag entries must contain a tuple of tag values")
+                    lines.append('        <div class="tags">')
+                    for tag in value:
+                        lines.append(f'          <span class="tag">{inline_html(tag)}</span>')
+                    lines.append("        </div>")
+                elif kind == "bullet":
+                    lines.append('        <ul class="bullets">')
+                    while index < len(project.entries) and project.entries[index][0] == "bullet":
+                        lines.append(f"          <li>{inline_html(str(project.entries[index][1]))}</li>")
+                        index += 1
+                    lines.append("        </ul>")
+                    continue
+                else:
+                    raise SyncError(f"unsupported rendered entry kind: {kind}")
+                index += 1
+            lines.append("      </article>")
+            lines.append("")
+        if lines[-1] == "":
+            lines.pop()
+        lines.append("    </section>")
+        lines.append("")
+    
+    lines.extend(["  </main>"])
     return "\n".join(lines) + "\n"
 
 
