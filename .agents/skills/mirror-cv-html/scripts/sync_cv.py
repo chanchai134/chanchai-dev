@@ -62,6 +62,7 @@ class Job:
 @dataclass(frozen=True)
 class Project:
     title: str
+    info: str  # Year · Type part after ->
     # Entries are (kind, value), where kind is metadata, bullet, tags, or placeholder.
     entries: tuple[tuple[str, str | tuple[str, ...]], ...]
 
@@ -166,7 +167,7 @@ def parse_base(source: str) -> CV:
     if not education:
         fail(index + 1, "at least one education entry is required")
     # Don't increment index here - we're pointing at EXPERIENCE_HEADING
-    
+
     # Skip EXPERIENCE_HEADING
     index += 1
 
@@ -181,7 +182,18 @@ def parse_base(source: str) -> CV:
             break
         if not line.startswith(" - ## "):
             fail(index + 1, "expected a role beginning with ' - ## '")
-        title_row = split_row(line[6:], index + 1)
+
+        # Handle job title with -> notation
+        title_text = line[6:]
+        if " -> " in title_text:
+            title_row = split_row(title_text, index + 1)
+            job_title = title_row.left
+            job_duration = title_row.right
+        else:
+            # For jobs without -> notation, use empty duration
+            job_title = required_field(title_text, index + 1, "job title")
+            job_duration = ""
+
         index += 1
         entries = []
         while index < len(lines) and not lines[index].startswith(" - ## "):
@@ -215,10 +227,10 @@ def parse_base(source: str) -> CV:
                 metadata = required_field(body, index + 1, "metadata")
                 entries.append(("metadata", metadata))
             index += 1
-        jobs.append(Job(title_row.left, title_row.right, tuple(entries)))
+        jobs.append(Job(job_title, job_duration, tuple(entries)))
     if not jobs:
         fail(len(lines), "at least one experience role is required")
-    
+
     # Parse projects (optional, after jobs)
     projects = []
     if index < len(lines) and lines[index] == PROJECTS_HEADING:
@@ -233,7 +245,19 @@ def parse_base(source: str) -> CV:
                 fail(index + 1, "additional sections after projects are not supported")
             if not line.startswith(" - ## "):
                 fail(index + 1, "expected a project beginning with ' - ## '")
-            title = required_field(line[6:], index + 1, "project title")
+
+            # Handle project title - split -> notation for projects
+            title_text = line[6:]
+            if " -> " in title_text:
+                # Split project title into title and info
+                title_row = split_row(title_text, index + 1)
+                project_title = title_row.left
+                project_info = title_row.right
+            else:
+                # For projects without -> notation, use empty info
+                project_title = required_field(title_text, index + 1, "project title")
+                project_info = ""
+
             index += 1
             entries = []
             while index < len(lines) and not lines[index].startswith(" - ## "):
@@ -265,7 +289,7 @@ def parse_base(source: str) -> CV:
                     metadata = required_field(body, index + 1, "metadata")
                     entries.append(("metadata", metadata))
                 index += 1
-            projects.append(Project(title, tuple(entries)))
+            projects.append(Project(project_title, project_info, tuple(entries)))
 
     return CV(
         name=name,
@@ -395,7 +419,7 @@ def render_main(cv: CV) -> str:
             "",
         ]
     )
-    
+
     lines.extend(
         [
             '    <section class="section" aria-labelledby="experience-title">',
@@ -441,7 +465,7 @@ def render_main(cv: CV) -> str:
     if lines[-1] == "":
         lines.pop()
     lines.extend(["    </section>", ""])
-    
+
     # Render projects section if there are any
     if cv.projects:
         lines.extend(
@@ -456,9 +480,11 @@ def render_main(cv: CV) -> str:
                     '      <article class="job">',
                     '        <div class="job-head split-line">',
                     f'          <h3 class="job-title split-left">{inline_html(project.title)}</h3>',
-                    '        </div>',
                 ]
             )
+            if project.info:
+                lines.append(f'          <div class="split-right">{inline_html(project.info)}</div>')
+            lines.append('        </div>')
             index = 0
             while index < len(project.entries):
                 kind, value = project.entries[index]
@@ -489,7 +515,7 @@ def render_main(cv: CV) -> str:
             lines.pop()
         lines.append("    </section>")
         lines.append("")
-    
+
     lines.extend(["  </main>"])
     return "\n".join(lines) + "\n"
 
