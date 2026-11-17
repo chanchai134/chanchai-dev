@@ -11,6 +11,7 @@ This repository contains Chanchai Charnataparporn's CV. `base.md` is the canonic
 - `index.cjs` reads that exact HTML from disk and returns it as a string in a standard Lambda proxy response.
 - `.github/workflows/deploy-lambda.yml` assumes an AWS role through GitHub OIDC, packs `index.cjs` and `chanchai.html` into a ZIP, and runs `aws lambda update-function-code --publish`.
 - `README.md` documents viewing, printing, updating, deployment configuration, and reviewing the CV.
+- `.claude/skills/mirror-cv-html/SKILL.md` is the repository-local procedure for mirroring `base.md` into `chanchai.html` and checking content parity statically. It does not automate browser or print-preview verification; the owner performs those checks.
 - `.gitignore` excludes private sources and generated files.
 
 PDFs are on-demand exports only; they are not repository artifacts. Never add `chanchai.pdf` or any other PDF to Git. PDF creation must go through the browser's print menu, not through a generated file committed alongside the source.
@@ -44,9 +45,9 @@ PDFs are on-demand exports only; they are not repository artifacts. Never add `c
 ## Editing workflow
 
 1. Check `git status`, the current branch, and `origin` before changing files.
-2. Read `base.md` and the relevant HTML; identify whether the requested change affects content, presentation, or both.
+2. Read `base.md` and the relevant HTML; identify whether the requested change affects content, presentation, or both. For a content synchronization or parity check, load `.claude/skills/mirror-cv-html/SKILL.md` and follow its procedure.
 3. Make wording changes in `base.md` first, then mirror the content into `chanchai.html` using the exact content rules above. Make presentation-only changes in `chanchai.html`; keep unrelated styling unchanged and keep both guides synchronized with workflow changes.
-4. Inspect the continuous screen document and every printed page in a real browser. On screen, confirm the A4-width sheet has no page gaps, fixed page heights, or repeated continuation header. In print media, confirm automatic pagination uses the available space rather than forcing whole roles onto a later page. Check for horizontal overflow, content beyond page boundaries, bottom-edge clipping, broken flex rows, accidental blank pages, and clipped box decorations at role continuations.
+4. When using `.claude/skills/mirror-cv-html/SKILL.md`, perform only its static checks and leave browser and print verification to the owner. Do not automate those checks with Computer Use or another browser tool.
 5. Do not add CI tests for this deployment. For handler changes, check JavaScript syntax with `node --check index.cjs` if needed. For workflow changes, lint the GitHub Actions YAML when a linter is available.
 6. Review the final diff and stage only the intended files with explicit `git add` commands.
 7. Stop for the repository owner's review. Do not commit, push, or trigger a deployment.
@@ -80,7 +81,7 @@ Generated PDFs must remain outside Git. Do not create a repository PDF through D
 
 ## Verification requirements
 
-A content or layout change requires real-browser screen and print-layout checks before staging.
+For the repository-local mirror skill, verify source/HTML parity statically before staging. The checks below are the owner's manual browser and print-review checklist, not agent automation steps. Do not use Computer Use or browser automation for that skill.
 
 - Confirm the screen layout is one continuous A4-width sheet with no fixed page heights, page gaps, or repeated continuation header.
 - Confirm the printed page count matches the content-driven pagination with no accidental blank pages.

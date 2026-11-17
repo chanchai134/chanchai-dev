@@ -11,6 +11,7 @@ A senior software engineer CV sourced from `base.md` and presented as a self-con
 | `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
 | `AGENTS.md` | Content-mapping, maintenance, and staging instructions for coding agents |
+| `.claude/skills/mirror-cv-html/SKILL.md` | Repository-local skill for exact Markdown-to-HTML synchronization and static content checks; visual and print verification remain manual |
 | `.gitignore` | Exclusions for private sources and generated files |
 
 The CV contains the professional summary, education and certificates, and experience from `base.md`. Literal `TODO` entries remain visible until the source is updated. The HTML and Lambda handler have no external runtime dependencies.
@@ -39,16 +40,16 @@ The stylesheet presents one continuous A4-width document without fixed page heig
 
 ## Update the CV
 
-Edit wording in `base.md` first, then mirror it into `chanchai.html` without rephrasing or adding content. Edit `chanchai.html` directly only for presentation changes. There is no generator or build step; the two files are synchronized manually.
+Edit wording in `base.md` first, then mirror it into `chanchai.html` without rephrasing or adding content. Edit `chanchai.html` directly only for presentation changes. There is no generator or build step; the two files are synchronized manually. In Claude Code, use the repository-local `/mirror-cv-html` skill for the complete synchronization and verification procedure; other agents can read `.claude/skills/mirror-cv-html/SKILL.md` directly.
 
 Apply these source mappings exactly:
 
 - `left text -> right text`: render a flex row with `justify-content: space-between`, preserving both text sides and hiding the `->` marker.
-- `<br>`: render a normal HTML line break.
+- `<br>` in job metadata: end the current `<p class="job-meta">` and put the following metadata line in its own `<p class="job-meta">`, without displaying the marker or adding an empty trailing paragraph.
 - `### text1, text2, text3`: render each comma-separated value as a separate `<span class="tag">...</span>` in source order, without the `###` marker or commas.
 - Markdown links: preserve the exact label and URL as a clickable link.
 
-Preserve all other wording and literal `TODO` entries exactly. Check the continuous screen layout and every printed page in a real browser. When a PDF is needed, export a fresh copy through the browser's print menu and do not add it to Git.
+Preserve all other wording and literal `TODO` entries exactly. The repository-local mirror skill performs static source/HTML checks only; the owner checks the continuous screen layout and every printed page personally. When a PDF is needed, export a fresh copy through the browser's print menu and do not add it to Git.
 
 `<main class="cv">` contains all sections and all five roles in one continuous flow. Every role uses the same `<article class="job">` structure and unboxed styling; there are no job cards, explicit page sections, fixed page heights, or forced role breaks. The browser determines the printed page count from the content, splits roles only where needed, and does not duplicate the Experience heading. Keep individual bullets and education entries intact where practical. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
 
