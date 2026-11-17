@@ -1,13 +1,13 @@
 # Chanchai Charnataparporn — CV
 
-A senior software engineer CV sourced from `base.md` and presented as a self-contained HTML document with a two-page A4 print layout and no CV page footers. A PDF can be exported on demand through the document's **Print / Save as PDF** button; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
+A senior software engineer CV sourced from `base.md` and presented as a self-contained HTML document with a two-page A4 print layout and no CV page footers. A PDF can be exported on demand through the browser's print menu; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `base.md` | Canonical CV content and wording |
-| `chanchai.html` | Presentation source with embedded CSS, two-page print layout, and PDF export button; its content mirrors `base.md` |
+| `chanchai.html` | Presentation source with embedded CSS and a two-page print layout; its content mirrors `base.md` |
 | `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
 | `AGENTS.md` | Content-mapping, maintenance, and staging instructions for coding agents |
@@ -21,10 +21,10 @@ Open `chanchai.html` in Chrome, Edge, or another modern browser. Contact, profil
 
 ## Export a PDF
 
-The **Print / Save as PDF** button in `chanchai.html` is the only PDF export path for this repository.
+Use the browser's built-in print menu to export a PDF. The HTML contains no in-document print controls.
 
 1. Open `chanchai.html` in Chrome or Edge.
-2. Click **Print / Save as PDF** at the top of the document.
+2. Open the browser menu and choose **Print**.
 3. In the browser's print dialog, use these settings:
    - Destination: **Save as PDF**
    - Paper size: **A4**
@@ -48,9 +48,9 @@ Apply these source mappings exactly:
 - `### text1, text2, text3`: render each comma-separated value as a separate `<span class="tag">...</span>` in source order, without the `###` marker or commas.
 - Markdown links: preserve the exact label and URL as a clickable link.
 
-Preserve all other wording and literal `TODO` entries exactly. Check every page in a real browser with print media enabled. When a PDF is needed, export a fresh copy with **Print / Save as PDF** and do not add it to Git.
+Preserve all other wording and literal `TODO` entries exactly. Check every page in a real browser with print media enabled. When a PDF is needed, export a fresh copy through the browser's print menu and do not add it to Git.
 
-Each page is an explicit `<section class="page">`. The current two-page layout places profile/education plus the Experience heading and complete first role on page 1, and the four remaining roles on page 2, with compact headers and no CV name/page-number footers. Keep the Experience heading and first role together on page 1, without duplicating the heading on page 2. When adding or removing pages, update the print-bar instructions, this guide, and `AGENTS.md`. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
+Each page is an explicit `<section class="page">`. The current two-page layout places profile/education plus the Experience heading and complete first role on page 1, and the four remaining roles on page 2, with compact headers and no CV name/page-number footers. Keep the Experience heading and first role together on page 1, without duplicating the heading on page 2. When adding or removing pages, update this guide and `AGENTS.md`. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
 
 ## AWS Lambda deployment
 

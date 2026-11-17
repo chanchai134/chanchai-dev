@@ -11,7 +11,6 @@
       --muted: #566575;
       --navy: #163b5c;
       --accent: #087f8c;
-      --accent-soft: #e9f5f5;
       --line: #d8e1e8;
       --soft: #f4f7f9;
       --white: #ffffff;
@@ -33,32 +32,6 @@
     p { margin: 0; }
     ul { margin: 0; padding: 0; list-style: none; }
     li { margin: 0; }
-
-    .print-bar {
-      position: fixed;
-      z-index: 10;
-      top: 18px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      padding: 9px 12px;
-      border: 1px solid #ccd6de;
-      border-radius: 8px;
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 4px 16px rgba(23,37,54,.12);
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .print-bar button {
-      border: 0;
-      border-radius: 5px;
-      padding: 7px 13px;
-      background: var(--navy);
-      color: white;
-      font: inherit;
-      cursor: pointer;
-    }
 
     .cv { width: 210mm; margin: 0 auto; }
     .page {
@@ -198,20 +171,10 @@
       background: #fbfcfd;
     }
     .job-card .job-meta { margin-bottom: 2.6mm; }
-    .placeholder {
-      min-height: 15mm;
-      padding: 3mm;
-      border: .3mm dashed #b8cbd4;
-      border-radius: 1.2mm;
-      background: var(--accent-soft);
-      color: var(--muted);
-      font-size: 8.8pt;
-    }
 
     @page { size: A4 portrait; margin: 0; }
     @media print {
       html, body { width: 210mm; margin: 0; padding: 0; background: white; }
-      .print-bar { display: none !important; }
       .cv { width: 210mm; margin: 0; }
       .page {
         width: 210mm;
@@ -223,17 +186,10 @@
     }
     @media screen and (max-width: 850px) {
       .cv { transform-origin: top left; }
-      .print-bar { position: absolute; top: 8px; right: 8px; }
-      .print-bar span { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="print-bar" aria-label="Document actions">
-    <span>A4 · 2 pages · Print at 100% scale</span>
-    <button type="button" onclick="window.print()">Print / Save as PDF</button>
-  </div>
-
   <main class="cv">
     <section class="page" id="page-1" aria-label="CV page 1: Profile, education and current experience">
       <header class="hero">
@@ -242,9 +198,10 @@
         <div class="contact-row">
           <span class="contact-item"><span class="contact-label">Phone:</span> +66 (0) 83 441 9565</span>
           <span class="contact-item"><span class="contact-label">Email:</span> <a href="mailto:chanchai51142@gmail.com">chanchai51142@gmail.com</a></span>
-          <span class="contact-item"><span class="contact-label">web:</span> <a href="https://chanchai.dev/">chanchai.dev</a></span>
+          <span class="contact-item"><span class="contact-label">Date of Birth:</span> April 14, 1998 (28 years old)</span>
         </div>
         <div class="contact-row">
+          <span class="contact-item"><span class="contact-label">Web:</span> <a href="https://chanchai.dev/">chanchai.dev</a></span>
           <span class="contact-item"><span class="contact-label">GitHub:</span> <a href="https://github.com/chanchai134">github.com/chanchai134</a></span>
           <span class="contact-item"><span class="contact-label">LinkedIn:</span> <a href="https://www.linkedin.com/in/chanchai134">linkedin.com/in/chanchai134</a></span>
         </div>
@@ -252,7 +209,7 @@
 
       <section class="section" aria-labelledby="summary-title">
         <h2 class="section-title" id="summary-title">Professional Summary</h2>
-        <p class="summary">Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver frontends, CI/CD pipelines, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and business stakeholders.</p>
+        <p class="summary">Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver frontends, CI/CD pipelines, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and stakeholders.</p>
       </section>
 
       <section class="section" aria-labelledby="education-title">
@@ -281,7 +238,7 @@
             <div class="split-right">1 year+ (December 2025 - Now)</div>
           </div>
           <p class="job-meta">AIA Co., Ltd. (AIA Thailand) — Outsourced via Tech Combine Co., Ltd.</p>
-          <p class="job-meta">Product: <a href="https://www.aia.co.th/th/help-support/health-services/aia-one">AIA ONE</a></p>
+          <p class="job-meta">Product: <a href="https://www.aia.co.th/th/help-support/health-services/aia-one">AIA ONE</a> — A mobile application used by agents to manage their customer portfolios.</p>
           <ul class="bullets">
             <li>Built and maintained Java Spring Boot microservices for AIA ONE mobile application, exposing their APIs through a unified Azure API Management (APIM) gateway and enabling asynchronous, event-driven communication via Azure Event Hubs.</li>
             <li>Implemented Redis across microservices for low-latency caching, distributed rate limiting, and request idempotency, protecting services from duplicate transactions.</li>
@@ -299,8 +256,9 @@
             <span class="tag">Microsoft SQL Server</span>
             <span class="tag">Redis</span>
             <span class="tag">k6</span>
+            <span class="tag">load testing</span>
+            <span class="tag">unit testing</span>
             <span class="tag">vulnerability</span>
-            <span class="tag">mitmproxy</span>
           </div>
         </article>
       </section>
@@ -318,8 +276,31 @@
             <h3 class="job-title split-left">Node.js Developer</h3>
             <div class="split-right">1 year 7 months (May 2024 – November 2025)</div>
           </div>
-          <p class="job-meta">Omise Co., Ltd.<br>Outsourced via Tech Combine Co., Ltd.</p>
-          <p class="placeholder">TODO</p>
+          <p class="job-meta">Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.</p>
+          <p class="job-meta">Product: <a href="https://www.ticketier.com">https://www.ticketier.com</a> — An event ticketing platform specializing in music festivals.</p>
+          <ul class="bullets">
+            <li>Built Node.js/TypeScript APIs for TICKETIER’s web, staff application, and admin back-office, supporting ticket issuance, order management, promotions, and payments.</li>
+            <li>Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and webhook processing.</li>
+            <li>Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits from cross-table foreign keys.</li>
+            <li>Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.</li>
+            <li>Enhanced end-to-end observability across APIs by implementing OpenTelemetry instrumentation for GCP Cloud Trace.</li>
+            <li>Configured GitHub Actions CI/CD workflows to automate application testing, builds, and artifact uploads.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">unit testing</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Prisma ORM</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">HTML</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Google Cloud Storage</span>
+            <span class="tag">Cloud Trace</span>
+            <span class="tag">OpenTelemetry</span>
+            <span class="tag">Payment</span>
+            <span class="tag">Omise</span>
+          </div>
         </article>
 
         <article class="job job-card">
@@ -328,7 +309,7 @@
             <div class="split-right">8 months (September 2023 - April 2024)</div>
           </div>
           <p class="job-meta">Forth Vending Co., Ltd (TAO-BIN)</p>
-          <p class="placeholder">TODO</p>
+          <p>TODO</p>
         </article>
 
         <article class="job job-card">
@@ -337,7 +318,7 @@
             <div class="split-right">2 years (July 2020 - July 2022)</div>
           </div>
           <p class="job-meta">King Power Click Co., Ltd</p>
-          <p class="placeholder">TODO</p>
+          <p>TODO</p>
         </article>
 
         <article class="job job-card">
@@ -346,7 +327,7 @@
             <div class="split-right">3 months (June 2019 – August 2019)</div>
           </div>
           <p class="job-meta">PTT Digital Solutions Co., Ltd</p>
-          <p class="placeholder">TODO</p>
+          <p>TODO</p>
         </article>
       </div>
     </section>

@@ -34,7 +34,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.
    - Enhanced end-to-end observability across APIs by implementing OpenTelemetry instrumentation for GCP Cloud Trace.
    - Configured GitHub Actions CI/CD workflows to automate application testing, builds, and artifact uploads.
-   - ### Node.js, TypeScript, unit testing, PostgreSQL, Prisma ORM, GitHub Actions, HTML, GCP, Google Cloud Storage, Cloud Trace, OpenTelemetry, Payment, Omise 
+   - ### Node.js, TypeScript, unit testing, PostgreSQL, Prisma ORM, GitHub Actions, HTML, GCP, Google Cloud Storage, Cloud Trace, OpenTelemetry, payments, Omise 
 
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
    Forth Vending Co., Ltd (TAO-BIN)
