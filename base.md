@@ -65,7 +65,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - ### Python, Jupyter Notebook, Keras, web crawler
 
 # Individual Projects
- - ## An CV AI-powered Website
+ - ## CV AI-powered Website -> 2026 · Individual
    [GitHub: chanchai134/chanchai-dev](https://github.com/chanchai134/chanchai-dev) · Live CV: [https://chanchai.dev/](https://chanchai.dev/)
    - Guided an AI agent to build a continuous A4-width HTML layout with automatic print pagination for CV PDF export.
    - Vibe-coded a deterministic Markdown-to-HTML synchronizer and AI skill to automate validation workflows using Hermes Agent.
@@ -73,7 +73,19 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Built an automated GitHub Actions CI/CD pipeline with keyless OIDC authentication to package and deploy an AWS Lambda function, updating chanchai.dev on every main branch merge or update.
    - ### AI Agent, Hermes Agent, GitHub Actions, OIDC, DNS, Cloudflare, AWS Lambda, AWS API Gateway, Markdown, HTML
 
- - ## Resume Android Application
+ - ## Resume Android Application -> 2023 · Individual
    [GitHub: chanchai134/resume-android](https://github.com/chanchai134/resume-android) · [Demonstration video](https://youtu.be/ilr0QjcC9wA)<br>
    An Android presentation of the resume, reflecting an interest in mobile application architecture alongside backend engineering.
    - ### Kotlin, Jetpack Compose, Room, Dagger
+
+ - ## LiveVOD-KU -> 2020 · Pair project
+   [Kasetsart University project record](https://ecourse.cpe.ku.ac.th/projar/project/details/1417)<br>
+   Live-streaming and video-on-demand website. Responsible for backend development using Node.js/Express and MongoDB, with Docker and React in the project stack.
+
+ - ## Tea Kingdom -> 2018 · Team project
+   [GitHub: chanchai134/tea-kingdom](https://github.com/chanchai134/tea-kingdom)<br>
+   E-commerce website developed in a full-stack role with Node.js/Express, MongoDB, and React; originally deployed on Heroku.
+
+ - ## TheForest -> 2017 · Individual
+   [GitHub: chanchai134/TheForest](https://github.com/chanchai134/TheForest)<br>
+   An Angry Birds-style game developed with Python and the Arcade library.
