@@ -36,10 +36,14 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - ### Node.js, TypeScript, PostgreSQL, Prisma ORM, GitHub Actions, HTML, GCP, Cloud Trace, OpenTelemetry, payments
 
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
-   Forth Vending Co., Ltd (TAO-BIN)
-   - Enhanced and maintained Vendii, a back-office platform used by multiple TAO-BIN vending-machine teams for machinerelated operations.
-   - Applied Domain-Driven Design with particular use of domain events to support business workflows and maintainable backend behavior.
+   Forth Vending Co., Ltd (TAO-BIN)<br>
+   Product: [https://www.vendii.io](https://www.vendii.io) — A centralized vending machine management platform utilized by TAO-BIN
+   - Enhanced and maintained core Node.js and GraphQL API services for partner location contracts and automated inventory management, ensuring uninterrupted vending machine operations without material shortages.
+   - Applied Domain-Driven Design (DDD), leveraging domain events, the Transactional Outbox, and Saga patterns to guarantee eventual consistency across distributed services.
+   - Automated scheduled background jobs using AWS EventBridge and AWS Lambda, eliminating manual intervention for recurring operational tasks.
+   - Mentored junior engineers on Domain-Driven Design (DDD) principles via code reviews and pair programming to improve code quality.
    - Worked in an English-using engineering environment, collaborating on requirements, implementation, and ongoing platform maintenance.
+   - ### Node.js, TypeScript, GraphQL, PostgreSQL, Domain-Driven Design, Saga pattern, AWS, S3, AWS Lambda, RabbitMQ, English
  - ## Software Engineering -> 2 years (July 2020 - July 2022)
    King Power Click Co., Ltd
    TODO
