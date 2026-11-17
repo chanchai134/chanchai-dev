@@ -54,11 +54,11 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Provided reliable product data synchronization from MongoDB to Elasticsearch using an Apache NiFi workflow with cursor-based pagination for large-scale datasets.
    - Implemented a personalized product recommendation API powered by Amazon Personalize, leveraging customer order history and Google Analytics behavioral data.
    - Shared engineering knowledge with colleagues on tools including Elasticsearch and Apache Kafka.
-   - ### Node.js, TypeScript, GraphQL, MongoDB, Elasticsearch, Domain-Driven Design, Apache NiFi, Apache Kafka, Amazon Personalize, knowledge sharing
+   - ### Node.js, TypeScript, GraphQL, MongoDB, Elasticsearch, Domain-Driven Design, Apache NiFi, Apache Kafka, AWS, CDN, Amazon Personalize, knowledge sharing
 
  - ## Data Scientist (Internship) -> 3 months (June 2019 – August 2019)
    PTT Digital Solutions Co., Ltd
-   Product: A CLI program that rates Thai food review sentences from 1 to 5
+   Product: A CLI program that rates Thai-language food review sentences from 1 to 5
    - Independently developed a deep-learning project to predict ratings from Thai-language restaurant reviews
    - Crawled and preprocessed food review datasets from Wongnai and other review platforms.
    - Evaluated and benchmarked candidate deep learning models from university research databases to select optimal architectures for food review classification.
