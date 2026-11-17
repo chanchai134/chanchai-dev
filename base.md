@@ -1,11 +1,11 @@
 # Chanchai Charnataparporn
 Senior Software Engineer
 
-Phone: +66 (0) 83 441 9565 Email: chanchai51142@gmail.com web: [chanchai.dev](https://chanchai.dev/) 
-GitHub: [github.com/chanchai134](https://github.com/chanchai134) LinkedIn: [linkedin.com/in/chanchai134](https://www.linkedin.com/in/chanchai134)
+Phone: +66 (0) 83 441 9565 Email: chanchai51142@gmail.com Date of Birth: April 14, 1998 (28 years old)
+Web: [chanchai.dev](https://chanchai.dev/) GitHub: [github.com/chanchai134](https://github.com/chanchai134) LinkedIn: [linkedin.com/in/chanchai134](https://www.linkedin.com/in/chanchai134)
 
 # Professional Summary
-Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver frontends, CI/CD pipelines, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and business stakeholders.
+Senior Software Engineer with 5+ years of professional experience across insurance, event ticketing, e-commerce, and vending operations. I have contributed to several products with deep hands-on expertise in Node.js/TypeScript, Java/Spring Boot, Go, event-driven architecture, concurrency control, various database categories, and major cloud providers. Beyond my core backend focus, I leverage AI-accelerated tools—including GitHub Copilot and Hermes Agent—to efficiently deliver frontends, CI/CD pipelines, and Infrastructure as Code. I have solid experience in the Agile software development lifecycle, collaborating closely with QA, frontend/mobile engineers, solution architects, and stakeholders.
 
 # Education and certificates
  - Bachelor of Engineering (Computer Engineering) with First Class Honours, Kasetsart University (GPA 3.82) -> 2016 - 2020
