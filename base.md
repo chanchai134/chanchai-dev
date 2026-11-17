@@ -15,7 +15,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 # Experience
  - ## Experience Backend Engineer -> 1 year+ (December 2025 - Now)
    AIA Co., Ltd. (AIA Thailand) — Outsourced via Tech Combine Co., Ltd.<br>
-   Product: [AIA ONE](https://www.aia.co.th/th/help-support/health-services/aia-one)
+   Product: [AIA ONE](https://www.aia.co.th/th/help-support/health-services/aia-one) — A mobile application used by agents to manage their customer portfolios.
    - Built and maintained Java Spring Boot microservices for AIA ONE mobile application, exposing their APIs through a unified Azure API Management (APIM) gateway and enabling asynchronous, event-driven communication via Azure Event Hubs.
    - Implemented Redis across microservices for low-latency caching, distributed rate limiting, and request idempotency, protecting services from duplicate transactions.
    - Enhanced full-stack features for the internal back-office React web application, ensuring seamless API integration.
@@ -23,28 +23,18 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Hardened application security by remediating vulnerabilities detected by Veracode (SAST/DAST) and Prisma Cloud scans.
    - Designed and scheduled Azure Data Factory (ADF) pipelines to synchronize data from the AIA Datalake into core application databases and automate large-scale data retention and deletion, reducing storage overhead while maintaining regulatory compliance.
    - Leveraged GitHub Copilot to accelerate feature implementation, unit test generation, and code reviews across services.
-   - ### Java Spring Boot, React, GitHub Copilot, Azure, Microsoft SQL Server, Redis, k6, vulnerability, mitmproxy
+   - ### Java Spring Boot, React, GitHub Copilot, Azure, Microsoft SQL Server, Redis, k6, load testing, unit testing, vulnerability, mitmproxy
 
  - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
    Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.<br>
-   Product: [https://www.ticketier.com](https://www.ticketier.com)
-
-Implemented OpenTelemetry instrumentation for GCP-hosted backend services and integrated tracing with Datadog to improve observability across checkout APIs.
-
-Developed Omise payment-gateway integrations covering saved-card checkout, refunds, cancellations, and webhook processing, including retry handling for inconsistent webhook data.
-
-Built Node.js/TypeScript APIs for the TICKETIER storefront and back-office staff application, supporting payment operations, order management, and user and attendee information checks.
-
-Improved OLTP reliability for ticket quotas and promotion codes by implementing optimistic locking to prevent concurrent ticket cancellations, handling transaction timeouts, and reducing lock waits caused by cross-table foreign keys.
-
-Created bilingual invoice templates in HTML and used Chrome Headless Shell to generate PDF invoices for automated email attachment and delivery.
-
-Integrated Google Cloud Storage into back-office file and reporting workflows, using time-limited signed URLs to provide secure access to stored files.
-
-Configured GitHub Actions CI/CD workflows to automate application testing, builds, and deployments.
-
-
-   - Prisma/ Pqsql
+   Product: [https://www.ticketier.com](https://www.ticketier.com) — An event ticketing platform specializing in music festivals.
+   - Built Node.js/TypeScript APIs for TICKETIER’s web, staff app, and admin back-office, supporting ticket issuance, order management, promotions, and payments.
+   - Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and asynchronous webhook processing.
+   - Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits from cross-table foreign keys.
+   - Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.
+   - Enhanced end-to-end observability across APIs by implementing OpenTelemetry instrumentation for GCP Cloud Trace.
+   - Configured GitHub Actions CI/CD workflows to automate application testing, builds, and artifact uploads.
+   - ### Node.js, TypeScript, unit testing, PostgreSQL, Prisma ORM, GitHub Actions, HTML, GCP, Google Cloud Storage, Cloud Trace, OpenTelemetry, Payment, Omise 
 
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
    Forth Vending Co., Ltd (TAO-BIN)
