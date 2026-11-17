@@ -11,7 +11,8 @@ A senior software engineer CV sourced from `base.md` and presented as a self-con
 | `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
 | `AGENTS.md` | Content-mapping, maintenance, and staging instructions for coding agents |
-| `.claude/skills/mirror-cv-html/SKILL.md` | Repository-local skill for exact Markdown-to-HTML synchronization and static content checks; visual and print verification remain manual |
+| `.agents/skills/mirror-cv-html/SKILL.md` | Repository-local skill for deterministic Markdown-to-HTML synchronization and static content checks; visual and print verification remain manual |
+| `.agents/skills/mirror-cv-html/scripts/sync_cv.py` | Standard-library deterministic synchronizer with read-only `--check` and atomic `--write` modes |
 | `.gitignore` | Exclusions for private sources and generated files |
 
 The CV contains the professional summary, education and certificates, and experience from `base.md`. Literal `TODO` entries remain visible until the source is updated. The HTML and Lambda handler have no external runtime dependencies.
@@ -40,7 +41,17 @@ The stylesheet presents one continuous A4-width document without fixed page heig
 
 ## Update the CV
 
-Edit wording in `base.md` first, then mirror it into `chanchai.html` without rephrasing or adding content. Edit `chanchai.html` directly only for presentation changes. There is no generator or build step; the two files are synchronized manually. In Claude Code, use the repository-local `/mirror-cv-html` skill for the complete synchronization and verification procedure; other agents can read `.claude/skills/mirror-cv-html/SKILL.md` directly.
+Edit wording in `base.md` first, then mirror it into `chanchai.html` without rephrasing or adding content. Edit the HTML head directly for CSS-only presentation changes. There is no application build step or third-party dependency. Use the repository-local `/mirror-cv-html` skill, or run its deterministic synchronizer directly from the repository root:
+
+```bash
+# Check without changing files; add --diff to see differences
+python .agents/skills/mirror-cv-html/scripts/sync_cv.py --check
+
+# Regenerate <main class="cv"> from base.md
+python .agents/skills/mirror-cv-html/scripts/sync_cv.py --write
+```
+
+`--write` replaces only the CV's `<main class="cv">` block, preserving the HTML head and CSS. The same source and shell produce byte-identical output on repeated runs. `--check` returns 0 when synchronized, 1 for drift, and 2 for invalid input or I/O errors. Invalid source never causes a partial write. If markup inside the generated block needs to change, update the script's renderer as well.
 
 Apply these source mappings exactly:
 

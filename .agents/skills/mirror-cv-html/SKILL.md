@@ -5,9 +5,30 @@ description: Use when syncing base.md to chanchai.html statically.
 
 # Mirror CV Markdown to HTML
 
-Mirror this repository's canonical CV content from `base.md` into the existing presentation in `chanchai.html`. This is a synchronization task, not a resume-writing task. Keep the workflow manual: there is no generator, package manager, build step, or second canonical HTML copy.
+Mirror this repository's canonical CV content from `base.md` into the existing presentation in `chanchai.html`. This is a synchronization task, not a resume-writing task. There is no application build step, package manager, or second canonical HTML copy. An on-demand, standard-library Python script keeps the generated CV body deterministic.
 
 Do not use Computer Use, browser automation, browser rendering, screenshots, or print-preview automation for this procedure. Perform only static checks against the source files and HTML. The repository owner handles all browser and print verification personally.
+
+## Run the deterministic synchronizer
+
+From the repository root, use [`scripts/sync_cv.py`](scripts/sync_cv.py):
+
+```bash
+# Read-only check: 0 = in sync, 1 = drift, 2 = invalid input or I/O error
+python .agents/skills/mirror-cv-html/scripts/sync_cv.py --check
+
+# Optional unified diff when the check reports drift
+python .agents/skills/mirror-cv-html/scripts/sync_cv.py --check --diff
+
+# Regenerate the CV body from base.md
+python .agents/skills/mirror-cv-html/scripts/sync_cv.py --write
+```
+
+The script has no third-party dependencies and does not open a browser. It strictly parses the supported `base.md` grammar, renders the complete `<main class="cv">` block in a fixed order, and preserves everything outside that block, including the HTML head and CSS. It adds no timestamps, environment-specific content, or random values. For the same `base.md` and HTML/CSS shell, repeated runs produce byte-identical output; an additional `--write` reports `UNCHANGED`.
+
+Malformed or unsupported source constructs fail with a line-specific error and exit code 2 instead of being omitted or guessed. Writes are atomic, so invalid input cannot leave a partially updated CV. If the source grammar or required main-markup structure changes, update the parser/renderer deliberately rather than bypassing its checks.
+
+For content changes, edit `base.md` first and run `--write`. For CSS-only presentation changes, edit the HTML head and run `--check`; the existing generated body remains valid. If the required markup inside `<main class="cv">` changes, update the renderer and regenerate rather than hand-editing only one side. Do not keep hand-written content overrides in the generated block.
 
 ## Start with the live files
 
@@ -17,7 +38,7 @@ Do not use Computer Use, browser automation, browser rendering, screenshots, or 
    - `git diff -- base.md chanchai.html`
    - `git diff --cached -- base.md chanchai.html`
    - Do not reset, unstage, or overwrite unrelated edits.
-4. Decide whether the request changes content, presentation, or both. For wording changes, edit `base.md` first. For presentation-only changes, leave `base.md` unchanged and prove that all rendered content still matches it.
+4. Decide whether the request changes content, presentation, or both. For wording changes, edit `base.md` first and run the synchronizer with `--write`. For presentation-only changes, leave `base.md` unchanged and prove that all rendered content still matches it with `--check`.
 
 ## Build the expected content model from the source
 
