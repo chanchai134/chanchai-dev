@@ -33,19 +33,13 @@
     ul { margin: 0; padding: 0; list-style: none; }
     li { margin: 0; }
 
-    .cv { width: 210mm; margin: 0 auto; }
-    .page {
-      position: relative;
+    .cv {
       width: 210mm;
-      height: 297mm;
-      margin: 0 auto 24px;
+      height: auto;
+      margin: 0 auto;
       padding: 11mm 14mm 12mm;
       background: var(--white);
-      box-shadow: 0 3px 18px rgba(23,37,54,.13);
-      break-after: page;
-      page-break-after: always;
     }
-    .page:last-child { break-after: auto; page-break-after: auto; }
 
     .hero {
       margin: -11mm -14mm 5mm;
@@ -115,8 +109,8 @@
 
     .credential a { text-decoration: underline; text-decoration-color: #b8cbd4; }
 
-    .job { break-inside: avoid; }
-    .job-head { margin-bottom: 1.6mm; }
+    .job + .job { margin-top: 5mm; }
+    .job-head { margin-bottom: 1.6mm; break-after: avoid; }
     .job-title { margin: 0; color: var(--ink); font-size: 11.1pt; line-height: 1.25; }
     .job-meta { margin-bottom: 2.2mm; color: var(--muted); font-size: 8.7pt; line-height: 1.42; }
     .job-meta a { color: var(--navy); text-decoration: underline; text-decoration-color: #b8cbd4; }
@@ -152,35 +146,19 @@
       line-height: 1.3;
     }
 
-    .continuation-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 5mm;
-      margin-bottom: 5mm;
-      padding-bottom: 2.4mm;
-      border-bottom: .6mm solid var(--navy);
+    @media screen {
+      .cv { box-shadow: 0 3px 18px rgba(23,37,54,.13); }
     }
-    .continuation-head strong { color: var(--navy); font-size: 10pt; }
-    .continuation-head span { color: var(--muted); font-size: 8pt; }
-    .remaining-jobs { display: grid; gap: 4mm; }
-    .job-card {
-      padding: 3.4mm 3.7mm;
-      border: .3mm solid var(--line);
-      border-radius: 1.5mm;
-      background: #fbfcfd;
-    }
-    .job-card .job-meta { margin-bottom: 2.6mm; }
 
     @page { size: A4 portrait; margin: 0; }
     @media print {
       html, body { width: 210mm; margin: 0; padding: 0; background: white; }
-      .cv { width: 210mm; margin: 0; }
-      .page {
+      .cv {
         width: 210mm;
-        height: 297mm;
+        height: auto;
         margin: 0;
         box-shadow: none;
+        box-decoration-break: clone;
       }
       a { color: inherit; text-decoration: none; }
     }
@@ -191,7 +169,6 @@
 </head>
 <body>
   <main class="cv">
-    <section class="page" id="page-1" aria-label="CV page 1: Profile, education and current experience">
       <header class="hero">
         <h1 id="person-name">Chanchai Charnataparporn</h1>
         <div class="role" id="person-role">Senior Software Engineer</div>
@@ -261,17 +238,8 @@
             <span class="tag">vulnerability</span>
           </div>
         </article>
-      </section>
-    </section>
 
-    <section class="page" id="page-2" aria-label="CV page 2: Remaining experience">
-      <header class="continuation-head">
-        <strong>Chanchai Charnataparporn</strong>
-        <span>Senior Software Engineer</span>
-      </header>
-
-      <div class="remaining-jobs">
-        <article class="job job-card">
+        <article class="job">
           <div class="job-head split-line">
             <h3 class="job-title split-left">Node.js Developer</h3>
             <div class="split-right">1 year 7 months (May 2024 – November 2025)</div>
@@ -292,18 +260,19 @@
             <span class="tag">unit testing</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">Prisma ORM</span>
+            <span class="tag">OLTP</span>
             <span class="tag">GitHub Actions</span>
             <span class="tag">HTML</span>
             <span class="tag">GCP</span>
             <span class="tag">Google Cloud Storage</span>
             <span class="tag">Cloud Trace</span>
             <span class="tag">OpenTelemetry</span>
-            <span class="tag">Payment</span>
+            <span class="tag">payments</span>
             <span class="tag">Omise</span>
           </div>
         </article>
 
-        <article class="job job-card">
+        <article class="job">
           <div class="job-head split-line">
             <h3 class="job-title split-left">Software Engineering II</h3>
             <div class="split-right">8 months (September 2023 - April 2024)</div>
@@ -312,7 +281,7 @@
           <p>TODO</p>
         </article>
 
-        <article class="job job-card">
+        <article class="job">
           <div class="job-head split-line">
             <h3 class="job-title split-left">Software Engineering</h3>
             <div class="split-right">2 years (July 2020 - July 2022)</div>
@@ -321,7 +290,7 @@
           <p>TODO</p>
         </article>
 
-        <article class="job job-card">
+        <article class="job">
           <div class="job-head split-line">
             <h3 class="job-title split-left">Data Scientist - Internship</h3>
             <div class="split-right">3 months (June 2019 – August 2019)</div>
@@ -329,8 +298,7 @@
           <p class="job-meta">PTT Digital Solutions Co., Ltd</p>
           <p>TODO</p>
         </article>
-      </div>
-    </section>
+      </section>
   </main>
 </body>
 </html>

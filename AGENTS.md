@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository contains Chanchai Charnataparporn's CV. `base.md` is the canonical source for the CV wording, and the published artifact is a static HTML document with a two-page A4 print layout. A dependency-free Node.js AWS Lambda handler serves the same HTML through the owner's existing API Gateway HTTP API. GitHub Actions packages two files into a ZIP and updates the existing Lambda with the AWS CLI. There is no local application server, package manager, application build step, SAM template, or CI test suite.
+This repository contains Chanchai Charnataparporn's CV. `base.md` is the canonical source for the CV wording, and the published artifact is a static HTML document with a continuous A4-width layout and automatic A4 print pagination. A dependency-free Node.js AWS Lambda handler serves the same HTML through the owner's existing API Gateway HTTP API. GitHub Actions packages two files into a ZIP and updates the existing Lambda with the AWS CLI. There is no local application server, package manager, application build step, SAM template, or CI test suite.
 
 ## Canonical files
 
@@ -31,13 +31,14 @@ PDFs are on-demand exports only; they are not repository artifacts. Never add `c
 ## HTML and print architecture
 
 - The document is self-contained HTML with embedded CSS and system fonts; avoid adding runtime dependencies or remote assets.
-- Each printed page is an explicit `<section class="page" id="page-N">` inside `<main class="cv">`.
-- The current layout has two A4 pages: profile/education plus the Experience heading and complete first role on page 1, and the four remaining roles on page 2. Update this guide and `README.md` if the page count intentionally changes.
-- `.page` has fixed `210mm × 297mm` dimensions with compact header and bottom spacing. `@page` selects A4 portrait with zero margins.
+- `<main class="cv">` is the only page-like container. It holds the profile, education, and one Experience section containing every role as a sibling `<article class="job">`.
+- `.cv` is `210mm` wide with automatic height and compact padding on both screen and print. Do not add fixed page heights, explicit page sections, page gaps, or a repeated continuation header.
+- All experience roles share the same unboxed typography, spacing, and structure. Do not add `job-card`, card borders, shaded role panels, or different treatment based on role details or `TODO` placeholders.
+- `@page` selects A4 portrait with zero margins. Print uses `box-decoration-break: clone` on `.cv` to repeat document padding at automatic page breaks.
 - `.split-line` implements the `->` mapping with a flex row and `justify-content: space-between`; keep both sides legible without changing their text.
 - Do not add CV name/page-number footers; the owner removed them. Keep browser headers and footers disabled when exporting.
 - The document has no in-document print controls; the owner uses the browser's print menu.
-- Preserve `break-after: page` / `page-break-after: always` behavior. Keep the Experience heading and first role together on page 1, the four other roles on page 2, and avoid breaking individual jobs, education items, or bullet items where practical. Do not add a second Experience heading to page 2.
+- Let the browser paginate naturally to use available page space. Do not use `break-inside: avoid` on `.job` or force an entire role onto one page. Keep a job heading with following content where practical, and avoid breaking individual bullets or education items. Roles may continue across printed pages without a repeated Experience heading.
 - Do not add a floating print button or other screen-only print bar.
 
 ## Editing workflow
@@ -45,7 +46,7 @@ PDFs are on-demand exports only; they are not repository artifacts. Never add `c
 1. Check `git status`, the current branch, and `origin` before changing files.
 2. Read `base.md` and the relevant HTML; identify whether the requested change affects content, presentation, or both.
 3. Make wording changes in `base.md` first, then mirror the content into `chanchai.html` using the exact content rules above. Make presentation-only changes in `chanchai.html`; keep unrelated styling unchanged and keep both guides synchronized with workflow changes.
-4. Inspect every page in a real browser, including print media. Check for horizontal overflow, content beyond the page, bottom-edge clipping, broken flex rows, and accidental blank pages. Confirm the Experience heading and complete first role fit together on page 1 and the other roles remain on page 2.
+4. Inspect the continuous screen document and every printed page in a real browser. On screen, confirm the A4-width sheet has no page gaps, fixed page heights, or repeated continuation header. In print media, confirm automatic pagination uses the available space rather than forcing whole roles onto a later page. Check for horizontal overflow, content beyond page boundaries, bottom-edge clipping, broken flex rows, accidental blank pages, and clipped box decorations at role continuations.
 5. Do not add CI tests for this deployment. For handler changes, check JavaScript syntax with `node --check index.cjs` if needed. For workflow changes, lint the GitHub Actions YAML when a linter is available.
 6. Review the final diff and stage only the intended files with explicit `git add` commands.
 7. Stop for the repository owner's review. Do not commit, push, or trigger a deployment.
@@ -79,12 +80,13 @@ Generated PDFs must remain outside Git. Do not create a repository PDF through D
 
 ## Verification requirements
 
-A content or layout change requires a real-browser print-layout check before staging.
+A content or layout change requires real-browser screen and print-layout checks before staging.
 
-- Confirm the expected page count; currently two pages.
-- Confirm the print layout uses A4 portrait and the intended page breaks.
-- Inspect all pages for clipping, overlap, blank pages, broken flex rows, bottom-edge overflow, and unreadably dense content.
-- Confirm the Experience heading and complete first role, including all bullets and tags, fit together on page 1, and the four other roles remain on page 2 without a duplicated heading.
+- Confirm the screen layout is one continuous A4-width sheet with no fixed page heights, page gaps, or repeated continuation header.
+- Confirm the printed page count matches the content-driven pagination with no accidental blank pages.
+- Confirm the print layout uses A4 portrait, has no explicit page or whole-job break, and fills available space before continuing.
+- Inspect all printed pages for clipping, overlap, broken flex rows, bottom-edge overflow, and unreadably dense content.
+- Confirm all five roles use the same unboxed `.job` treatment, with no card borders or shading. If a role spans pages, confirm its content continues correctly without a repeated Experience heading.
 - Confirm section endings are present, no content is truncated, and no CV name/page-number footers were reintroduced.
 - Compare the rendered CV text and links against `base.md`, including every `->` row, `<br>` metadata paragraph boundary, tag, date, URL, and literal `TODO`; ensure no legacy CV content remains.
 - Check that no PDF, private Office document, AWS credential, ZIP archive, test file, or SAM/build directory is staged.

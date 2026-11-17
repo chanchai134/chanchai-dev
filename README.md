@@ -1,13 +1,13 @@
 # Chanchai Charnataparporn — CV
 
-A senior software engineer CV sourced from `base.md` and presented as a self-contained HTML document with a two-page A4 print layout and no CV page footers. A PDF can be exported on demand through the browser's print menu; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
+A senior software engineer CV sourced from `base.md` and presented as a self-contained HTML document with a continuous A4-width layout, automatic A4 print pagination, and no CV page footers. A PDF can be exported on demand through the browser's print menu; no PDF is stored in this repository. A Node.js AWS Lambda function serves the same HTML through your existing API Gateway HTTP API, and GitHub Actions updates its code through the AWS CLI.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `base.md` | Canonical CV content and wording |
-| `chanchai.html` | Presentation source with embedded CSS and a two-page print layout; its content mirrors `base.md` |
+| `chanchai.html` | Presentation source with embedded CSS, a continuous screen layout, and automatic A4 print pagination; its content mirrors `base.md` |
 | `index.cjs` | Dependency-free Node.js handler that returns the HTML as a string |
 | `.github/workflows/deploy-lambda.yml` | Two-file ZIP and AWS CLI code update using GitHub OIDC |
 | `AGENTS.md` | Content-mapping, maintenance, and staging instructions for coding agents |
@@ -35,7 +35,7 @@ Use the browser's built-in print menu to export a PDF. The HTML contains no in-d
    - Browser headers and footers: **Disabled**
 4. Save the PDF wherever you want to keep or share it. Generated PDFs are ignored and must not be committed.
 
-The stylesheet defines A4 dimensions and explicit page breaks. Do not use “Fit to page,” since it can change the intended layout.
+The stylesheet presents one continuous A4-width document without fixed page heights, page gaps, or a repeated continuation header. Printing paginates the same flow automatically, using the available page space and repeating the document padding at page breaks. A role may continue across pages, while individual bullets remain intact. Do not use “Fit to page,” since it can change the intended layout.
 
 ## Update the CV
 
@@ -48,9 +48,9 @@ Apply these source mappings exactly:
 - `### text1, text2, text3`: render each comma-separated value as a separate `<span class="tag">...</span>` in source order, without the `###` marker or commas.
 - Markdown links: preserve the exact label and URL as a clickable link.
 
-Preserve all other wording and literal `TODO` entries exactly. Check every page in a real browser with print media enabled. When a PDF is needed, export a fresh copy through the browser's print menu and do not add it to Git.
+Preserve all other wording and literal `TODO` entries exactly. Check the continuous screen layout and every printed page in a real browser. When a PDF is needed, export a fresh copy through the browser's print menu and do not add it to Git.
 
-Each page is an explicit `<section class="page">`. The current two-page layout places profile/education plus the Experience heading and complete first role on page 1, and the four remaining roles on page 2, with compact headers and no CV name/page-number footers. Keep the Experience heading and first role together on page 1, without duplicating the heading on page 2. When adding or removing pages, update this guide and `AGENTS.md`. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
+`<main class="cv">` contains all sections and all five roles in one continuous flow. Every role uses the same `<article class="job">` structure and unboxed styling; there are no job cards, explicit page sections, fixed page heights, or forced role breaks. The browser determines the printed page count from the content, splits roles only where needed, and does not duplicate the Experience heading. Keep individual bullets and education entries intact where practical. Keep browser headers and footers disabled during PDF export. Changing `base.md` alone does not change the published document or trigger deployment; the updated content must also be mirrored into `chanchai.html`. The deployment package still contains only `chanchai.html` and `index.cjs`.
 
 ## AWS Lambda deployment
 
