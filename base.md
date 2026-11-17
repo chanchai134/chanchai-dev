@@ -10,7 +10,6 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 # Education and certificates
  - Bachelor of Engineering (Computer Engineering) with First Class Honours, Kasetsart University (GPA 3.82) -> 2016 - 2020
  - AWS Certified Solutions Architect – Associate [view certificate](https://www.credly.com/badges/4d15e4cd-f57f-4dab-9e56-55ccfd97ed83) -> 2024 - 2027
- - AWS Certified Cloud Practitioner [view certificate](https://www.credly.com/badges/af830fac-694a-48d8-b9a9-e6078e781cd9) -> 2021 - 2027
 
 # Experience
  - ## Experience Backend Engineer -> 1 year+ (December 2025 - Now)
@@ -30,15 +29,17 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    Product: [https://www.ticketier.com](https://www.ticketier.com) — An event ticketing platform specializing in music festivals.
    - Built Node.js/TypeScript APIs for TICKETIER’s web, staff application, and admin back-office, supporting ticket issuance, order management, promotions, and payments.
    - Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and webhook processing.
-   - Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits from cross-table foreign keys.
+   - Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits.
    - Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.
    - Enhanced end-to-end observability across APIs by implementing OpenTelemetry instrumentation for GCP Cloud Trace.
    - Configured GitHub Actions CI/CD workflows to automate application testing, builds, and artifact uploads.
-   - ### Node.js, TypeScript, unit testing, PostgreSQL, Prisma ORM, OLTP, GitHub Actions, HTML, GCP, Google Cloud Storage, Cloud Trace, OpenTelemetry, payments, Omise
+   - ### Node.js, TypeScript, PostgreSQL, Prisma ORM, GitHub Actions, HTML, GCP, Cloud Trace, OpenTelemetry, payments
 
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
    Forth Vending Co., Ltd (TAO-BIN)
-   TODO
+   - Enhanced and maintained Vendii, a back-office platform used by multiple TAO-BIN vending-machine teams for machinerelated operations.
+   - Applied Domain-Driven Design with particular use of domain events to support business workflows and maintainable backend behavior.
+   - Worked in an English-using engineering environment, collaborating on requirements, implementation, and ongoing platform maintenance.
  - ## Software Engineering -> 2 years (July 2020 - July 2022)
    King Power Click Co., Ltd
    TODO
