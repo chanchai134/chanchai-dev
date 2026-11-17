@@ -28,7 +28,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
  - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
    Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.<br>
    Product: [https://www.ticketier.com](https://www.ticketier.com) — An event ticketing platform specializing in music festivals.
-   - Built Node.js/TypeScript APIs for TICKETIER’s web, staff app, and admin back-office, supporting ticket issuance, order management, promotions, and payments.
+   - Built Node.js/TypeScript APIs for TICKETIER’s web, staff application, and admin back-office, supporting ticket issuance, order management, promotions, and payments.
    - Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and webhook processing.
    - Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits from cross-table foreign keys.
    - Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.
