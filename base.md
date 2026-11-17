@@ -23,13 +23,13 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Hardened application security by remediating vulnerabilities detected by Veracode (SAST/DAST) and Prisma Cloud scans.
    - Designed and scheduled Azure Data Factory (ADF) pipelines to synchronize data from the AIA Datalake into core application databases and automate large-scale data retention and deletion, reducing storage overhead while maintaining regulatory compliance.
    - Leveraged GitHub Copilot to accelerate feature implementation, unit test generation, and code reviews across services.
-   - ### Java Spring Boot, React, GitHub Copilot, Azure, Microsoft SQL Server, Redis, k6, load testing, unit testing, vulnerability, mitmproxy
+   - ### Java Spring Boot, React, GitHub Copilot, Azure, Microsoft SQL Server, Redis, k6, load testing, unit testing, vulnerability
 
  - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
    Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.<br>
    Product: [https://www.ticketier.com](https://www.ticketier.com) — An event ticketing platform specializing in music festivals.
    - Built Node.js/TypeScript APIs for TICKETIER’s web, staff app, and admin back-office, supporting ticket issuance, order management, promotions, and payments.
-   - Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and asynchronous webhook processing.
+   - Integrated the Omise payment gateway, supporting saved-card checkouts, refunds, cancellations, and webhook processing.
    - Strengthened OLTP reliability across ticket quotas and promotion codes via concurrency control and reduced lock waits from cross-table foreign keys.
    - Implemented an automated invoice pipeline using bilingual HTML templates, generating PDFs via Chrome Headless Shell and delivering them as email attachments.
    - Enhanced end-to-end observability across APIs by implementing OpenTelemetry instrumentation for GCP Cloud Trace.
