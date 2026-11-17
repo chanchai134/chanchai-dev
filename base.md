@@ -37,16 +37,27 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 
  - ## Software Engineering II -> 8 months (September 2023 - April 2024)
    Forth Vending Co., Ltd (TAO-BIN)<br>
-   Product: [https://www.vendii.io](https://www.vendii.io) — A centralized vending machine management platform utilized by TAO-BIN
+   Product: [https://www.vendii.io](https://www.vendii.io) — A centralized vending machine management platform utilized by TAO-BIN.
    - Enhanced and maintained core Node.js and GraphQL services for partner location contracts and automated inventory management, ensuring uninterrupted vending machine operations without material shortages.
    - Applied Domain-Driven Design (DDD), leveraging domain events, the Transactional Outbox, and Saga patterns to guarantee eventual consistency across distributed services.
    - Automated scheduled background jobs using AWS EventBridge and AWS Lambda, eliminating manual intervention for recurring operational tasks.
    - Mentored junior engineers on Domain-Driven Design (DDD) principles via code reviews and pair programming.
    - Collaborated in an English-speaking engineering environment under an international CTO.
    - ### Node.js, TypeScript, GraphQL, PostgreSQL, Domain-Driven Design, Transactional Outbox, Saga pattern, AWS, S3, AWS Lambda, AWS EventBridge, RabbitMQ, English
+
  - ## Software Engineering -> 2 years (July 2020 - July 2022)
-   King Power Click Co., Ltd
-   TODO
+   King Power Click Co., Ltd<br>
+   Product: [https://www.kingpower.com](https://www.kingpower.com) — A duty-free e-commerce platform.
+   - Developed Node.js and TypeScript backend services backed by a NoSQL database to power e-commerce product display, delivering APIs aligned with business requirements using Domain-Driven Design (DDD).
+   - Maintained a unified GraphQL API gateway across backend services to support frontend feature development and optimize data queries.
+   - Provided a full-text product-search mechanism using Elasticsearch, tuning search queries across multiple product attributes to enhance product discovery.
+   - Provided reliable product data synchronization from MongoDB to Elasticsearch using an Apache NiFi workflow with a cursor-based pagination method.
+   - Implemented a personalized product recommendation API powered by Amazon Personalize, leveraging customer order history and Google Analytics behavioral data.
+   - Shared engineering knowledge with colleagues on tools including Elasticsearch and Apache Kafka.
+   - ### Node.js, TypeScript, GraphQL, MongoDB, Elasticsearch, Domain-Driven Design, Apache NiFi, Apache Kafka, Amazon Personalize, knowledge sharing
+
  - ## Data Scientist - Internship -> 3 months (June 2019 – August 2019)
    PTT Digital Solutions Co., Ltd
-   TODO
+   - Independently researched and developed a deep-learning project to predict ratings from Thai-language restaurant reviews
+   - Crawled and preprocessed datasets, researched candidate deep learning models from academic papers in university databases, and implemented the resulting prediction model.
+   - ### Python, Jupyter Notebook, Keras
