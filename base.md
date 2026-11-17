@@ -48,16 +48,17 @@ Senior Software Engineer with 5+ years of professional experience across insuran
  - ## Software Engineering -> 2 years (July 2020 - July 2022)
    King Power Click Co., Ltd<br>
    Product: [https://www.kingpower.com](https://www.kingpower.com) — A duty-free e-commerce platform.
-   - Developed Node.js and TypeScript backend services backed by a NoSQL database to power e-commerce product display, delivering APIs aligned with business requirements using Domain-Driven Design (DDD).
-   - Maintained a unified GraphQL API gateway across backend services to support frontend feature development and optimize data queries.
+   - Developed Node.js and TypeScript backend services backed by a NoSQL database to power e-commerce product management, delivering APIs aligned with business requirements using Domain-Driven Design (DDD).
+   - Maintained a unified GraphQL API gateway across backend services to support web and mobile applications.
    - Provided a full-text product-search mechanism using Elasticsearch, tuning search queries across multiple product attributes to enhance product discovery.
-   - Provided reliable product data synchronization from MongoDB to Elasticsearch using an Apache NiFi workflow with a cursor-based pagination method.
+   - Provided reliable product data synchronization from MongoDB to Elasticsearch using an Apache NiFi workflow with a cursor pagination method.
    - Implemented a personalized product recommendation API powered by Amazon Personalize, leveraging customer order history and Google Analytics behavioral data.
    - Shared engineering knowledge with colleagues on tools including Elasticsearch and Apache Kafka.
    - ### Node.js, TypeScript, GraphQL, MongoDB, Elasticsearch, Domain-Driven Design, Apache NiFi, Apache Kafka, Amazon Personalize, knowledge sharing
 
  - ## Data Scientist - Internship -> 3 months (June 2019 – August 2019)
    PTT Digital Solutions Co., Ltd
-   - Independently researched and developed a deep-learning project to predict ratings from Thai-language restaurant reviews
-   - Crawled and preprocessed datasets, researched candidate deep learning models from academic papers in university databases, and implemented the resulting prediction model.
-   - ### Python, Jupyter Notebook, Keras
+   - Independently developed a deep-learning project to predict ratings from Thai-language restaurant reviews
+   - Crawled and preprocessed food review datasets from Wongnai and other review platforms.
+   - Evaluated and benchmarked candidate deep learning models from university research databases to select optimal architectures for food review classification.
+   - ### Python, Jupyter Notebook, Keras, web crawler
