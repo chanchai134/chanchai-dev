@@ -15,14 +15,14 @@ Senior Software Engineer with 5+ years of professional experience across insuran
  - ## Experience Backend Engineer -> 1 year+ (December 2025 - Now)
    AIA Co., Ltd. (AIA Thailand) — Outsourced via Tech Combine Co., Ltd.<br>
    Product: [AIA ONE](https://www.aia.co.th/th/help-support/health-services/aia-one) — A mobile application used by agents to manage their customer portfolios.
+   - Leveraged AI — GitHub Copilot — to accelerate feature implementation, unit test generation, and code reviews across services.
    - Built and maintained Java Spring Boot microservices for AIA ONE mobile application, exposing their APIs through a unified Azure API Management (APIM) gateway and enabling asynchronous, event-driven communication via Azure Event Hubs.
    - Implemented Redis across microservices for low-latency caching, distributed rate limiting, and request idempotency, protecting services from duplicate transactions.
    - Enhanced full-stack features for the internal back-office React web application, ensuring seamless API integration.
    - Improved application performance by using k6 load testing to identify bottlenecks and tuning Microsoft SQL Server through execution plan analysis, table partitioning, and index optimization.
    - Hardened application security by remediating vulnerabilities detected by Veracode (SAST/DAST) and Prisma Cloud scans.
    - Designed and scheduled Azure Data Factory (ADF) pipelines to synchronize data from the AIA Datalake into core application databases and automate large-scale data retention and deletion, reducing storage overhead while maintaining regulatory compliance.
-   - Leveraged GitHub Copilot to accelerate feature implementation, unit test generation, and code reviews across services.
-   - ### Java Spring Boot, React, GitHub Copilot, Azure, Microsoft SQL Server, Redis, k6, load testing, unit testing, vulnerability
+   - ### AI, GitHub Copilot, Java Spring Boot, React, Azure, Microsoft SQL Server, Redis, k6, load testing, unit testing, vulnerability
 
  - ## Node.js Developer -> 1 year 7 months (May 2024 – November 2025)
    Omise Co., Ltd. — Outsourced via Tech Combine Co., Ltd.<br>
