@@ -71,7 +71,7 @@ Senior Software Engineer with 5+ years of professional experience across insuran
    - Vibe-coded a deterministic Markdown-to-HTML synchronizer and AI skill to automate validation workflows using Hermes Agent.
    - Created agent guidance in AGENTS.md to enforce architectural constraints across AI-assisted workflows.
    - Built an automated GitHub Actions CI/CD pipeline with keyless OIDC authentication to package and deploy an AWS Lambda function, updating chanchai.dev on every main branch merge or update.
-   - ### AI Agent, Hermes Agent, Amazon Bedrock, GitHub Actions, DNS, Cloudflare, AWS Lambda, AWS API Gateway, HTML
+   - ### Claude, AI Agent, Hermes Agent, GitHub Actions, DNS, Cloudflare, AWS Lambda, AWS API Gateway, HTML
 
  - ## Resume Android Application -> 2023 · Individual
    [GitHub: chanchai134/resume-android](https://github.com/chanchai134/resume-android) · [Demonstration video](https://youtu.be/ilr0QjcC9wA)<br>
