@@ -66,12 +66,12 @@ Senior Software Engineer with 5+ years of professional experience across insuran
 
 # Individual Projects
  - ## CV AI-powered Website -> 2026 · Individual
-   [GitHub: chanchai134/chanchai-dev](https://github.com/chanchai134/chanchai-dev) · Live CV: [https://chanchai.dev/](https://chanchai.dev/)
+   [GitHub: chanchai134/chanchai-dev](https://github.com/chanchai134/chanchai-dev) · Live CV: [https://chanchai.dev](https://chanchai.dev)
    - Guided an AI agent to build a continuous A4-width HTML layout with automatic print pagination for CV PDF export.
    - Vibe-coded a deterministic Markdown-to-HTML synchronizer and AI skill to automate validation workflows using Hermes Agent.
    - Created agent guidance in AGENTS.md to enforce architectural constraints across AI-assisted workflows.
    - Built an automated GitHub Actions CI/CD pipeline with keyless OIDC authentication to package and deploy an AWS Lambda function, updating chanchai.dev on every main branch merge or update.
-   - ### AI Agent, Hermes Agent, GitHub Actions, OIDC, DNS, Cloudflare, AWS Lambda, AWS API Gateway, Markdown, HTML
+   - ### AI Agent, Hermes Agent, Amazon Bedrock, GitHub Actions, DNS, Cloudflare, AWS Lambda, AWS API Gateway, HTML
 
  - ## Resume Android Application -> 2023 · Individual
    [GitHub: chanchai134/resume-android](https://github.com/chanchai134/resume-android) · [Demonstration video](https://youtu.be/ilr0QjcC9wA)<br>
